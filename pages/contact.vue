@@ -36,8 +36,8 @@ export default {
   },
   data () {
     return {
-      email: '',
-      visibleMail: false,
+      email: 'contact@santoshb.com.np',
+      visibleMail: true,
       visibleGithub: true,
       title: 'Contact',
       socials: [
