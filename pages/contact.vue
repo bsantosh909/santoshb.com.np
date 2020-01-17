@@ -7,7 +7,7 @@
         <div class="separator">
           <h5>Write me</h5>
         </div>
-        <SocialIcon id="gmail" link="`mailto:${email}`" name="Email" />
+        <SocialIcon id="gmail" :link="`mailto:${email}`" name="Email" />
       </div>
 
       <div v-if="visibleGithub">
