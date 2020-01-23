@@ -7,7 +7,7 @@ export default {
   ],
   // Nuxt.js dev-modules
   buildModules: [
-    '@nuxtjs/eslint-module',
+    //'@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics'
   ],
   // Sitemap config...
