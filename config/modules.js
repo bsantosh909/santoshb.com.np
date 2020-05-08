@@ -37,7 +37,7 @@ export default {
 		gzip: true,
 		exclude: [
 			'/privacy',
-			'/writing/page'
+			'/writings/page'
 		]
 	}
 }
