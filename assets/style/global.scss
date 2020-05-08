@@ -1,0 +1,27 @@
+body {
+	font-family: 'Slabo 27px', sans-serif;
+	background-color: #f7fafc;
+}
+
+.separator {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 15px;
+
+	&::before, &::after {
+		content: '';
+		flex: 1;
+		border-bottom: 1px solid #d9d9d9;
+		margin-bottom: 7px;
+	}
+
+	&::before {
+		margin-right: 1em;
+	}
+
+	&::after {
+		margin-left: 1em;
+	}
+}
