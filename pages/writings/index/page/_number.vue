@@ -3,7 +3,7 @@
 		<b-container v-for="(article, i) of articleList" :key="`article-${i}`" class="py-3 my-5 rounded writing-box bg-gray-200">
 			<ArticleItem :article="article" />
 		</b-container>
-		<div class="my-5 rounded bg-gray-200 shadow" v-if="articleList.length > 2">
+		<div class="my-5" v-if="articleList.length > 2">
 			<adsbygoogle />
 		</div>
 	</div>

@@ -19,7 +19,7 @@
 				<b-badge v-for="(tag, i) of article.tags" :key="`article-tag-${i}`" class="mx-1 my-1 text-capitalize" variant="dark" pill>{{ tag }}</b-badge>
 			</b-col>
 		</b-row>
-		<div class="mt-5 bg-gray-200 rounded shadow">
+		<div class="mt-5">
 			<adsbygoogle />
 		</div>
 	</b-container>
