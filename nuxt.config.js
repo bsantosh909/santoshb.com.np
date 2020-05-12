@@ -28,6 +28,7 @@ export default {
 	...moduleConfig,
 	// Hmm...
 	generate: {
+		fallback: true,
 		routes: () => {
 			const writings = glob.sync('*.md', { cwd: 'writings' }).map((file) => `/writings/${path.basename(file, '.md')}`);
 			const writingCount = Math.ceil(writings.length / 5);
