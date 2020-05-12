@@ -47,7 +47,7 @@ export default {
 	},
 	methods: {
 		linkGen(pageNum) {
-			return pageNum === 1 ? '/writing' : `/writing/page/${pageNum}`
+			return pageNum === 1 ? '/writings' : `/writings/page/${pageNum}`
 		}
 	}
 }

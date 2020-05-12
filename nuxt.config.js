@@ -30,10 +30,10 @@ export default {
 	generate: {
 		routes: () => {
 			const writings = glob.sync('*.md', { cwd: 'writings' }).map((file) => `/writings/${path.basename(file, '.md')}`);
-			const writingCount = Math.ceil(writings / 5);
+			const writingCount = Math.ceil(writings.length / 5);
 			const writingPages = [];
 			if (writingCount > 1) {
-				for (let i = 0; i < writingCount.length; i++) writingPages.push(`/writings/page/${i+1}`);
+				for (let i = 0; i < writingCount; i++) writingPages.push(`/writings/page/${i+1}`);
 			}
 			return [].concat(writings, writingPages);
 		}
