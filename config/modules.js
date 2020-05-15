@@ -29,7 +29,8 @@ export default {
 	},
 	// Adsense configuration
 	'google-adsense': {
-		id: 'ca-pub-4087610164584593'
+		id: 'ca-pub-4087610164584593',
+		pageLevelAds: true
 	},
 	// Sitemap configuration
 	sitemap: {
