@@ -5,7 +5,7 @@
 			<p class="h1 font-weight-bold mt-2">Santosh Bhandari</p>
 			<p class="font-weight-bold text-capitalize">{{ skills.join('&ensp;•&ensp;') }}</p>
 		</b-container>
-		<div class="bg-gray-300 mt-5">
+		<div class="bg-darker mt-5">
 			<b-container class="py-4">
 				<p class="h4 text-center font-weight-bold pb-4"><u>About ME</u></p>
 				<div class="mt-3 text-center">
@@ -28,7 +28,7 @@
 		<div class="text-center pb-5 pt-4">
 			<SillSet />
 		</div>
-		<div class="bg-gray-300 py-3">	
+		<div class="bg-darker py-3">	
 			<blockquote class="blockquote text-center">
 				<p class="mb-0">"{{ quote.text }}"</p>
 				<footer class="blockquote-footer font-italic">{{ quote.author ? quote.author : 'Someone Amazing' }}</footer>

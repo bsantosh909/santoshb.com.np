@@ -14,7 +14,7 @@
 			<p class="py-2"><i>Most</i> of mine works are <b>open source</b> and are hosted on <i>github</i>. You are easily have a look at them through my github profile linked below!</p>
 			<SocialIcon link="https://github.com/TheLearneer" id="github" name="github" class="pb-2" />
 		</b-container>
-		<b-container fluid class="bg-gray-300 mt-3">
+		<b-container fluid class="bg-darker mt-3">
 			<div class="container separator">
 				<span class="h4 font-weight-bold">Notable Works</span>
 			</div>

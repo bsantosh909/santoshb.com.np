@@ -2,7 +2,7 @@
 	<div>
 		<a :href="link" target="_blank" class="text-decoration-none text-dark">
 			<b-img-lazy :src="imageLink" :width="size" rounded="circle" :thumbnail="thumbnail" />
-			<p v-if="display" class=" text-capitalize">{{ name }}</p>
+			<p v-if="display" class="font-weight-bold text-capitalize">{{ name }}</p>
 		</a>
 	</div>
 </template>

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<b-container v-for="(article, i) of articleList" :key="`article-${i}`" class="py-3 my-5 rounded writing-box bg-gray-200">
+		<b-container v-for="(article, i) of articleList" :key="`article-${i}`" class="py-3 my-5 rounded writing-box bg-darker">
 			<ArticleItem :article="article" />
 		</b-container>
 		<div class="my-5">
