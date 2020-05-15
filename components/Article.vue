@@ -1,7 +1,7 @@
 <template>
 	<div class="px-2">
 		<p class="font-weight-bold h2 no-text-decoration mb-3">{{ article.title }}</p>
-		<div class="border-top border-bottom mb-2 py-1">
+		<div class="border-top-bottom mb-2 py-1">
 			<span v-html="header" />
 		</div>
 		<div class="py-2">
@@ -10,7 +10,7 @@
 				<span class="font-weight-bold">Read More...</span>
 			</nuxt-link>
 		</div>
-		<b-row no-gutters class="my-2 py-1 border-top border-bottom">
+		<b-row no-gutters class="my-2 py-1 border-top-bottom">
 			<b-col sm="12" md="6">
 				<span v-if="article.updated">
 					<span>Originally created on</span>

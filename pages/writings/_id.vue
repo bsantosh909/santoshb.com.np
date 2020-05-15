@@ -3,14 +3,14 @@
 		<div class="text-center pb-4">
 			<p class="h1 font-weight-bold">{{ article.title }}</p>
 		</div>
-		<div class="border-top border-bottom mb-2 py-1">
+		<div class="border-top-bottom mb-2 py-1">
 			<span v-html="header" />
 		</div>
 		</div>
 		<div class="py-4">
 			<component :is="dynamicComponent" />
 		</div>
-		<b-row no-gutters class="my-2 py-1 border-top border-bottom">
+		<b-row no-gutters class="my-2 py-1 border-top-bottom">
 			<b-col sm="12" md="6" v-if="article.updated">
 				<span>Originally created on</span>
 				<span class="font-weight-bold">{{ new Date(article.created).toISOString().substr(0,10) }}</span>
