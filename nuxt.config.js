@@ -13,6 +13,7 @@ export default {
 		extend (config, ctx) {}
 	},
 	generate: {
+		fallback: true,
 		async routes() {
 			const { $content } = require('@nuxt/content');
 			const articles = await $content('blog').only(['slug']).fetch();
