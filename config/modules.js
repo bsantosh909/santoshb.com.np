@@ -40,7 +40,7 @@ export default {
 	content: {
 		markdown: {
 			prism: {
-				theme: '~/assets/css/prism-theme.css'
+				theme: 'prism-themes/themes/prism-atom-dark.css'
 			}
 		}
 	}
