@@ -1,46 +1,60 @@
 <template>
-	<div class="pt-3">
-		<div class="text-center">
-			<p class="h1 text-uppercase mt-3 text-center font-weight-bold">contact</p>
-			<div class="pt-2 pb-2 text-center">
-				<p class="font-italic">Feel free to say hello!</p>
+	<div class="container mx-auto p-5">
+		<div class="text-5xl text-center font-bold uppercase">Contact</div>
+		<div class="text-center pb-10">
+			<span>Feel free to say hello!</span>
+		</div>
+		<div v-for="list of contacts" :key="list.title" class="mt-5 text-center">
+			<div class="text-3xl font-semibold capitalize">
+				{{ list.title }}
+			</div>
+			<div class="italic">
+				{{ list.description }}
+			</div>
+			<div class="py-4 justify-around flex flex-wrap capitalize font-semibold mt-4">
+				<div v-for="site of list.items" :key="site.name" class="m-2">
+					<a :href="site.link" target="_blank">
+						<div class="block">
+							<img :src="getSocialImage(site.name)" :alt="site.name" class="w-16 mb-2 rounded-full">
+							<span>{{ site.name }}</span>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
-		<b-container class="py-3" align="center">
-			<div v-for="(category, i) of contacts" :key="`contact-category-${i}`">
-				<div class="separator">
-					<span class="h5 font-weight-bold text-capitalize">{{ category.title }}</span>
-				</div>
-				<b-row no-gutters class="justify-content-center">
-					<SocialIcon	v-for="(site, j) of category.items"	:key="`contact-category-${i}-site-${j}`" :id="site.id" :name="site.name" :link="site.link" class="mx-auto" />
-				</b-row>
-			</div>
-		</b-container>
 	</div>
 </template>
 
 <script>
 export default {
-	components: {
-		SocialIcon: () => import('@/components/Social')
-	},
 	data () {
 		return {
 			contacts: [
 				{
 					title: 'write me',
-					items: [{ link: 'mailto:contact@santoshb.com.np', id: "gmail", name: "gmail" }]
+					description: 'If you have anything to talk with me directly then you can always mail me. I check my mail every day, so you will get a response for sure.',
+					items: [{ link: 'mailto:contact@santoshb.com.np', name: "gmail" }]
 				},
 				{
 					title: 'social sites',
+					description: 'Just like you I am somehow active around social sites as well. You can add, follow and subscribe me over there as well!',
 					items: [
-						{ link: 'https://www.facebook.com/santosh.bhandari.1401', id: 'facebook', name: 'Facebook' },
-						{ link: 'https://www.instagram.com/bsantosh909', id: 'instagram', name: 'Instagram' },
-						{ link: 'https://twitter.com/bsantosh909', id: 'twitter', name: 'Twitter' },
-						{ link: 'https://www.youtube.com/user/TheSantoshbhandari', id: 'youtube', name: 'Youtube' }
+						{ link: 'https://www.facebook.com/santosh.bhandari.1401', name: 'facebook' },
+						{ link: 'https://www.instagram.com/bsantosh909', name: 'instagram' },
+						{ link: 'https://twitter.com/bsantosh909', name: 'twitter' },
+						{ link: 'https://www.youtube.com/user/TheSantoshbhandari', name: 'youtube' }
 					]
 				}
 			]
+		}
+	},
+	methods: {
+		getSocialImage(id) {
+			try {
+				return require(`~/assets/img/social/${id}.png`)
+			} catch(err) {
+				return '';
+			}
 		}
 	}
 }

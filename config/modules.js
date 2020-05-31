@@ -1,17 +1,16 @@
 export default {
 	// Nuxt.js modules
 	modules: [
-		'bootstrap-vue/nuxt',
-		'@nuxtjs/pwa',
+		'@nuxt/content',
 		'@nuxtjs/sitemap',
 		'@nuxtjs/google-adsense'
 	],
 	// Nuxt.js dev-modules
-	buildModules: [],
-	// Bootstrap-vue configuration
-	bootstrapVue: {
-		icons: true
-	},
+	buildModules: [
+		'@nuxtjs/pwa',
+		'@nuxtjs/tailwindcss',
+		'@nuxt/components'
+	],
 	// Progressive Web App related configuration
 	pwa: {
 		workbox: false,
@@ -20,25 +19,29 @@ export default {
 		meta: {
 			name: 'Santosh Bhandari - Innovative Developer',
 			author: 'Santosh Bhandari',
-			description: 'Personal Website, Protfolio and Collection of mine writings!',
+			description: 'Personal Website, Protfolio, Blog featuring interesting articles and some of mine free time writings!',
 			ogHost: 'https://santoshb.com.np',
 			twitterCard: 'summary',
 			twitterSite: '@bsantosh909',
 			twitterCreator: '@bsantosh909'
 		}
 	},
+	// Sitemap configuration
+	sitemap: {
+		hostname: 'https://santoshb.com.np',
+		gzip: true
+	},
 	// Adsense configuration
 	'google-adsense': {
 		id: 'ca-pub-4087610164584593',
 		pageLevelAds: true
 	},
-	// Sitemap configuration
-	sitemap: {
-		hostname: 'https://santoshb.com.np',
-		gzip: true,
-		exclude: [
-			'/privacy',
-			'/writings/page'
-		]
+	// Content configuration
+	content: {
+		markdown: {
+			prism: {
+				theme: '~/assets/css/prism-theme.css'
+			}
+		}
 	}
 }

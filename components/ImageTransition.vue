@@ -1,8 +1,8 @@
 <template>
 	<transition name="custom" mode="out-in" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
 		<div :key="currentImage">
-			<b-img-lazy :src="activeData.image" :key="activeData.text" :alt="`Skilled with ${activeData.text}`" width="248" />
-			<h4 v-if="showText">{{ activeData.text }}</h4>
+			<img :src="activeData.image" :key="activeData.text" :alt="`Skilled with ${activeData.text}`" width="248" />
+			<div class="text-xl font-bold" v-if="showText">{{ activeData.text }}</div>
 		</div>
 	</transition>
 </template>
@@ -53,3 +53,36 @@ export default {
 	}
 }
 </script>
+
+<style>
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+@-webkit-keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+</style>

@@ -1,6 +1,6 @@
-# santoshb
+# santoshb.com.np
 
-> Personal website with nuxtjs + boostrap, hosted on github!
+> Personal website, portfolio and blog!
 
 ## Build Setup
 
