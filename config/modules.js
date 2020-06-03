@@ -33,8 +33,7 @@ export default {
 	},
 	// Adsense configuration
 	'google-adsense': {
-		id: 'ca-pub-4087610164584593',
-		pageLevelAds: true
+		id: 'ca-pub-4087610164584593'
 	},
 	// Content configuration
 	content: {

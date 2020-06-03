@@ -3,8 +3,8 @@
 		<div v-for="(article, i) of articles" :key="article.slug" class="p-3 mb-10">
 			<BlogCard :data="article" :index="i" />
 		</div>
-		<div class="py-6">
-			<adsbygoogle />
+		<div class="my-8">
+			<adsbygoogle adSlot="1056851328" adFormat="fluid" adLayoutKey="-fb+5w+4e-db+86" />
 		</div>
 	</div>
 </template>

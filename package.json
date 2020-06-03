@@ -1,11 +1,11 @@
 {
   "name": "santoshb.com.np",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Personal website, portfolio, blog and some free time writings!",
   "author": "Santosh Bhandari",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=5000 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -18,11 +18,13 @@
     "nuxt": "^2.12.2",
     "prism-themes": "^1.4.0",
     "reading-time": "^1.2.0",
+    "tailwindcss": "^1.4.6",
     "vue-disqus": "^3.0.5"
   },
   "devDependencies": {
-    "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxt/components": "^0.3.0",
-    "@nuxtjs/tailwindcss": "^1.4.1"
+    "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "@nuxtjs/tailwindcss": "^2.0.0",
+    "cross-env": "^7.0.2"
   }
 }

@@ -4,7 +4,7 @@
 		<div class="flex flex-wrap">
 			<div class="w-full md:w-2/3 block">
 				<div v-for="(group, i) of skills" :key="`skillset-${i}`" class="py-3">
-					<div class="text-3xl">
+					<div class="text-2xl md:text-3xl">
 						<span class="mr-2 font-semibold">{{ group.title }}</span>
 						<div v-for="k in 5" class="inline-block rotate-45">
 							<svg class="w-6 mr-1" viewBox="0 0 16 16" fill="orange" v-if="k <= group.rating">
@@ -20,7 +20,7 @@
 					</span>
 				</div>
 			</div>
-			<div class="w-full md:w-1/3">
+			<div class="hidden md:block md:w-1/3">
 				<ImageTransition :list="images" />
 			</div>
 		</div>
