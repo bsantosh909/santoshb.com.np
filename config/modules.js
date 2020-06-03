@@ -9,6 +9,7 @@ export default {
 	buildModules: [
 		'@nuxtjs/pwa',
 		'@nuxtjs/tailwindcss',
+		'@nuxtjs/google-analytics',
 		'@nuxt/components'
 	],
 	// Progressive Web App related configuration
@@ -35,11 +36,15 @@ export default {
 	'google-adsense': {
 		id: 'ca-pub-4087610164584593'
 	},
+	// Analytics configuration
+	googleAnalytics: {
+		id: 'UA-155877975-1'
+	},
 	// Content configuration
 	content: {
 		markdown: {
 			prism: {
-				theme: 'prism-themes/themes/prism-atom-dark.css'
+				theme: 'prism-themes/themes/prism-material-oceanic.css'
 			}
 		}
 	}
