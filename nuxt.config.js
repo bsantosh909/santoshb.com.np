@@ -1,7 +1,10 @@
-import { head, hooks, moduleConfig } from './config';
+import { hooks, moduleConfig } from './config';
 
 export default {
 	mode: 'universal',
+	head: {
+		link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Acme|Slabo+27px&display=swap' }]
+	},
 	loading: { color: '#fff' },
 	css: [
 		'@/assets/css/index.css'
@@ -20,7 +23,6 @@ export default {
 			return articles.map((article) => `/blog/${article.slug}`);
 		}
 	},
-	head,
 	hooks,
 	...moduleConfig
 }

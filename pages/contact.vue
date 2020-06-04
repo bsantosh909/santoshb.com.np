@@ -1,6 +1,6 @@
 <template>
 	<div class="container mx-auto p-5">
-		<div class="text-5xl text-center font-bold uppercase">Contact</div>
+		<h1 class="text-5xl text-center font-bold uppercase">Contact</h1>
 		<div class="text-center pb-10">
 			<span>Feel free to say hello!</span>
 		</div>
@@ -46,6 +46,11 @@ export default {
 					]
 				}
 			]
+		}
+	},
+	head() {
+		return {
+			title: 'Contact ME | Santosh Bhandari'
 		}
 	},
 	methods: {

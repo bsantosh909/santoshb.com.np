@@ -82,18 +82,18 @@ export default {
 	},
 	head() {
 		return {
-			title: this.completeTitle,
+			title: this.article.title,
+			titleTemplate: '%s - Santosh Blogs',
 			meta: [
 				{ hid: 'description', name: 'description', content: this.articleDescription },
-				// Open-graph
-				{ hid: 'og:title', name: 'og:title', content: this.completeTitle },
-				{ hid: 'og:description', name: 'og:description', content: this.articleDescription },
-				{ hid: 'og:url', name: 'og:url', content: this.articleUrl },
-				{ hid: 'og:image', name: 'og:image', content: `https://santoshb.com.np${this.imageLink}` },
+				// Open Graph
+				{ hid: 'og:title', property: 'og:title', content: this.completeTitle },
+				{ hid: 'og:description', property: 'og:description', content: this.articleDescription },
+				{ hid: 'og:type', property: 'og:type', content: 'article' },
+				{ hid: 'og:image', property: 'og:image', content: `https://santoshb.com.np${this.imageLink}` },
 				// Twitter
 				{ hid: 'twitter:title', name: 'twitter:title', content: this.completeTitle },
 				{ hid: 'twitter:description', name: 'twitter:description', content: this.articleDescription },
-				{ hid: 'twitter:url', name: 'twitter:url', content: this.articleUrl },
 				{ hid: 'twitter:image', name: 'twitter:image', content: `https://santoshb.com.np${this.imageLink}` }
 			]
 		}
