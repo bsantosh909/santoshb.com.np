@@ -4,7 +4,7 @@
 			<BlogCard :data="article" :index="i" />
 		</div>
 		<div class="my-8">
-			<adsbygoogle adSlot="1056851328" adFormat="fluid" adLayoutKey="-fb+5w+4e-db+86" />
+			<adsbygoogle adSlot="1056851328" adFormat="fluid" adLayoutKey="-eo+58+6l-e2+5t" />
 		</div>
 	</div>
 </template>
