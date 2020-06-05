@@ -16,6 +16,7 @@ export default {
 	sitemap: {
 		hostname: 'https://santoshb.com.np',
 		gzip: true,
+		trailingSlash: true,
 		exclude: [
 			'/privacy'
 		]
