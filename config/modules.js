@@ -19,7 +19,11 @@ export default {
 		trailingSlash: true,
 		exclude: [
 			'/privacy'
-		]
+		],
+		defaults: {
+			changefreq: 'daily',
+			priority: 1
+		}
 	},
 	// Adsense configuration
 	'google-adsense': {

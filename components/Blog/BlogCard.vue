@@ -66,7 +66,7 @@ export default {
 			return this.index % 2 === 1 ? true : false;
 		},
 		articleLink() {
-			return `/blog/${this.data.slug}`;
+			return `/blog/${this.data.slug}/`;
 		}
 	},
 	methods: {

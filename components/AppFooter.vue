@@ -5,7 +5,7 @@
 		</div>
 		<div class="p-4">
 			<div class="text-left">
-				<nuxt-link to="/privacy" class="text-gray-300">Privacy policy</nuxt-link>
+				<nuxt-link to="/privacy/" class="text-gray-300">Privacy policy</nuxt-link>
 			</div>
 		</div>
 	</div>

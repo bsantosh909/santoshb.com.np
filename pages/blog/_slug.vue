@@ -30,6 +30,9 @@
 			</div>
 			-->
 		</div>
+		<div class="my-10">
+			<adsbygoogle adSlot="2052252693" />
+		</div>
 		<!--
 		<div v-if="article.toc.length">
 			<p class="font-semibold text-3xl">Table Of Content</p>

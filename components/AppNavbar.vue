@@ -35,19 +35,19 @@ export default {
 				/*
 				{
 					title: 'Portfolio',
-					to: '/portfolio'
+					to: '/portfolio/'
 				},*/
 				{
 					title: 'Blog',
-					to: '/blog'
+					to: '/blog/'
 				},/*
 				{
 					title: 'Writings',
-					to: '/writings'
+					to: '/writings/'
 				},*/
 				{
 					title: 'Contact',
-					to: '/contact'
+					to: '/contact/'
 				}
 			]
 		}
