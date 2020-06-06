@@ -8,7 +8,7 @@
 		<div class="my-4 bg-gray-200 p-4 w-full">
 			<Skills />
 		</div>
-		<div class="pt-4">
+		<div class="pt-4 px-4">
 			<div class="blockquote text-center">
 				<p class="text-xl">"{{ quote.text }}"</p>
 				<div class="italic text-gray-700">- {{ quote.author ? quote.author : 'Someone Amazing' }}</div>
