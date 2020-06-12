@@ -4,6 +4,7 @@ subtitle: Creating and supporting contents!
 author: TheLearneer
 banner: supercell-creator-program.png
 created: 2020-06-06
+updated: 2020-06-12
 summary: >
   Creator codes are part of the special program being run by Supercell. You should start supporting your favourite supercell content creator right away!
   Also you can join the program yourself! Something interesting is on the bottom as well!

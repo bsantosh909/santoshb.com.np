@@ -23,7 +23,8 @@ export default {
 		async routes() {
 			const { $content } = require('@nuxt/content');
 			const articles = await $content('blog').only(['slug']).fetch();
-			return articles.map((article) => `/blog/${article.slug}/`);
+			const blogArticles = articles.map((article) => `/blog/${article.slug}/`);
+			return [].concat(blogArticles);
 		}
 	},
 	hooks,

@@ -23,6 +23,15 @@ export default {
 		defaults: {
 			changefreq: 'daily',
 			priority: 1
+		},
+		async routes() {
+			const { $content } = require('@nuxt/content');
+			const articles = await $content('blog').only(['slug', 'created', 'updated']).fetch();
+			const blogArticles = articles.map((article) => ({
+				url: `/blog/${article.slug}/`,
+				lastmod: new Date(article.updated ? article.updated : article.created)
+			}));
+			return [].concat(blogArticles);
 		}
 	},
 	// Adsense configuration

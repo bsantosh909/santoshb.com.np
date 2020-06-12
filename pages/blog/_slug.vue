@@ -13,7 +13,7 @@
 						</svg>
 					</div>
 					<span>{{ createOrUpdate }}</span>
-					<span class="font-semibold">{{ getDate(article.created) }}</span>
+					<span class="font-semibold">{{ getDate(article.updated ? article.updated : article.created) }}</span>
 				</div>
 				<div class="flex space-x-1">
 					<div>
@@ -55,8 +55,12 @@
 				I hope you liked the article. Make sure to leave your feedbacks or queries through the comments below!
 			</span>
 		</div>
-		<div class="border-t border-b border-dark-700 py-1 flex justify-between">
-			<div>
+		<div class="border-t border-b border-dark-700 py-1 flex flex-wrap justify-between">
+			<div class="text-sm my-auto">
+				<div v-if="article.updated">
+					<span>Originally created on </span>
+					<span class="font-semibold">{{ getDate(article.created) }}</span>
+				</div>
 			</div>
 			<div class="flex space-x-2">
 				<span class="select-none inline-block bg-gray-300 rounded-full px-3 py-1 my-1 text-sm font-semibold text-dark-900 capitalize" v-for="badge in article.tags" :key="badge">
