@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "@klasa/timestamp": "0.0.1",
-    "@nuxt/content": "^1.2.0",
+    "@nuxt/content": "^1.3.2",
     "@nuxtjs/google-adsense": "^1.1.3",
     "@nuxtjs/sitemap": "^2.3.0",
     "nuxt": "^2.12.2",
     "prism-themes": "^1.4.0",
     "reading-time": "^1.2.0",
     "tailwindcss": "^1.4.6",
-    "vue-disqus": "^3.0.5"
+    "vue-disqus": "^4.0.0"
   },
   "devDependencies": {
     "@nuxt/components": "^0.3.0",

@@ -68,7 +68,7 @@
 			<adsbygoogle />
 		</div>
 		<div class="mt-12">
-			<vue-disqus shortname="santoshb" :identifier="article.slug" :url="articleUrl" :title="completeTitle" />
+			<Disqus :pageConfig="disqusConfig" />
 		</div>
 	</div>
 </template>
@@ -107,15 +107,19 @@ export default {
 		},
 		articleDescription() {
 			return this.article.summary.replace(/<[^>]*>?/gm, '')
-		},
-		articleUrl() {
-			return `https://santoshb.com.np${this.$route.path}`
-		},		
+		},	
 		imageLink() {
 			return `/img/banners/${this.article.banner}`;
 		},
 		completeTitle() {
 			return `${this.article.title}${this.article.subtitle ? ` - ${this.article.subtitle}` : ''}`;
+		},
+		disqusConfig() {
+			return {
+				url: `https://santoshb.com.np${this.$route.path}`,
+				identifier: this.article.slug,
+				title: this.completeTitle
+			}
 		}
 	},
 	methods: {
