@@ -465,6 +465,14 @@ This is an attempt to list all the creator codes available. If you find any code
 - `code` **Spuik**
 - [Facebook](https://www.facebook.com/Spiuk-Gaming-230984034477465/)
 
+### Sumit007
+- `code` **Sumit007**
+- [Youtube](https://www.youtube.com/channel/UCrWdPsIgE4GIWGiFUMHL4bQ)
+
+### Clashing Adda
+- `code` **Adda**
+- [Youtube](https://www.youtube.com/user/9476344080)
+
 **NOTE**: It took me really long to find all these codes and there are still many missing (_I am sure about that_), but it will take only about a minute to support your favourite content creator. So do support your favourite content creator!
 
 **NOTE2**: I have attempted to test all of the codes but if any are found to be wrong please inform me!
