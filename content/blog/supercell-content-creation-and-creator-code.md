@@ -63,7 +63,7 @@ Also there is a list of all the valid creator codes available [here](#available-
 Supercell Creator program is open for all. Which means you can simply apply for it. But there are few requirements so it won't be an easy task. Still all the information about that can be found in the [offical creators website](https://creators.supercell.com)!
 
 ## Available codes
-This is an attempt to list all the creator codes available. If you find any code missing then you can simply mention that in the comments below. Also if you know about more of the social media that these creators user mention them as well. I will add them all to this list!
+This is an attempt to list all the creator codes available. If you find any code missing then you can simply mention that in the comments below. I will add them all to this list. Heads up though there are over 100 creator codes listed!
 
 ### Galadon Gaming
 - `code` **Galadon**
@@ -245,9 +245,229 @@ This is an attempt to list all the creator codes available. If you find any code
 - `code` **SkullCrusher**
 - [Youtube](https://www.youtube.com/channel/UC8_PuQaxWS7gNZQqqMytZTg)
 
+### Pixel Crux
+- `code` **CRUX**
+- [Website](https://pixelcrux.com/)
+
+### DeckShop
+- `code` **deckshop**
+- [Website](https://www.deckshop.pro/)
+
+### Coltonw83
+- `code` **Coltonw83**
+- [Youtube](https://www.youtube.com/user/coltonw83)
+
+### Bufarete
+- `code` **BUF**
+- [Youtube](https://www.youtube.com/channel/UCeYiwK-omogzmc0i0s7QJYw)
+
+### B-rad
+- `code` **brad**
+- [Youtube](https://www.youtube.com/channel/UCo3ixhcZiwcmwVnqJlFJ2Iw)
+
+### FullFrontage
+- `code` **FullFrontage**
+- [Youtube](https://www.youtube.com/channel/UCaLv5JUZKefGs8yO2V0roVg)
+
+### KFC CLASH
+- `code` **KFC**
+- [Youtube](https://www.youtube.com/channel/UCWdBWdJLbI7MEWgx36Nnhsw)
+
+### Legendary
+- `code` **legendary**
+- [Youtube](https://www.youtube.com/channel/UCUqeVjVmNwYw4rNfNg95bmA)
+
+### The Chicken
+- `code` **chicken**
+- [Youtube](https://www.youtube.com/channel/UCDCBp0doGfOG_pd8_zn4wDA)
+
+### Captain Ben
+- `code` **cptnben**
+- [Youtube](https://www.youtube.com/channel/UCg-Ggeae8FZGZBhKdgExFWw)
+
+### Anikilo
+- `code` **Anikilo**
+- [Youtube](https://www.youtube.com/user/anikiloiOS)
+
+### DrekzeNN
+- `code` **Drekzenn**
+- [Youtube](https://www.youtube.com/channel/UCxIiGiwq-3r9lJ6DidcNpHg)
+
+### Malcaide
+- `code` **Malcaide**
+- [Youtube](https://www.youtube.com/channel/UC2yi2ufH-0dYQCiiPkTJchQ)
+
+### SHELBI
+- `code` **Shelbi**
+- [Youtube](https://www.youtube.com/channel/UCl-5nnL2pkpHAntFQ3TfTxw)
+
+### Soking
+- `code` **Soking**
+- [Twitch](https://www.twitch.tv/sokingrcq)
+
+### TheGameHuntah
+- `code` **Huntah**
+- [Youtube](https://www.youtube.com/channel/UCsfnlKS4fcljoaBCJPoKfrQ)
+
+### WithZack
+- `code` **WithZack**
+- [Youtube](https://www.youtube.com/channel/UCjmGtPZMS9kSLheN4MYO2XQ)
+
+### YoSoyRick
+- `code` **YoSoyRick**
+- [Youtube](https://www.youtube.com/channel/UC_rklqhEA3jIL_Y7CxLn5lQ)
+
+### Atchiin
+- `code` **Atchiin**
+- [Youtube](https://www.youtube.com/channel/UCzcW2HAzGKPEfZTTUN1JMaA)
+
+### Artube Clash
+- `code` **Artube**
+- [Youtube](https://www.youtube.com/channel/UCtGTfdYlG-B6SgeRiaf61CA)
+
+### BrunoClash
+- `code` **brunoclash**
+- [Youtube](https://www.youtube.com/user/brunoclash)
+
+### CaueMP
+- `code` **Cauemp**
+- [Youtube](https://www.youtube.com/channel/UCrRwgjaBeaB_yS5x0xHa17w)
+
+### Clash Com Nery
+- `code` **Nery**
+- [Youtube](https://www.youtube.com/user/ClashcomNery)
+
+### Decow
+- `code` **Decow**
+- [Youtube](https://www.youtube.com/channel/UCl1bioQzR8k00F5blGyx-JQ)
+
+### GuzzoClash YT
+- `code` **Guzzo**
+- [Youtube](https://www.youtube.com/channel/UCcqQ9A3lh3tbhPTlYmmQJqA)
+
+### Clash Royale Dicas
+- `code` **ClashDicas**
+- [Website](https://www.clashroyaledicas.com/)
+
+### Jo Jonas
+- `code` **jojonas**
+- [Youtube](https://www.youtube.com/channel/UC7LJEgpUDjUYdU7GcnHVQvg)
+
+### Morten
+- `code` **Morten**
+- [Youtube](https://www.youtube.com/channel/UCn2AA9OCYnZZ1T82RaGUYPw/featured)
+
+### BigSpin
+- `code` **BigSpin**
+- [Youtube](https://www.youtube.com/channel/UCQfclnKDP51Da6rETlvmSRw)
+
+### FlobbyCR
+- `code` **Flobby**
+- [Youtube](https://www.youtube.com/channel/UCsSWpCEwKaPZBwUJhLXSi_g)
+
+### AshTax
+- `code` **AshTax**
+- [Youtube](https://www.youtube.com/channel/UC1q7LRamyojZuAbhsBWWgAA)
+
+### LightPollux
+- `code` **LightPollux**
+- [Youtube](https://www.youtube.com/channel/UC-TL19eCXCvYjMArUwd3rxg)
+
+### Ouahleouff
+- `code` **Ouah**
+- [Youtube](https://www.youtube.com/channel/UCvcVcuOdDtu0UCV-YcfUgHA)
+
+### Naxiva
+- `code` **Naxiva**
+- [Youtube](https://www.youtube.com/channel/UCh1KLlBVyjZXUpWtrTWkseA)
+
+### Ruusskov
+- `code` **Ruruglou**
+- [Youtube](https://www.youtube.com/channel/UCwIQuFHh0zpM7l6HLRWI-qA)
+
+### JsGodSaveTheFish
+- `code` **JSGOD**
+- [Twitter](https://twitter.com/Johannsiegrist)
+
+### JUNE
+- `code` **June**
+- [Youtube](https://www.youtube.com/channel/UCL_IvtOZo6sONpiydbzzHpA)
+
+### BBokTV
+- `code` **bbok**
+- [Youtube](https://www.youtube.com/channel/UCO5bdxKgKczSpjFbfsGykmA)
+
+### kiokio
+- `code` **kiokio**
+- [Youtube](https://www.youtube.com/channel/UCHrL96ET2wzYMzuWBtAgCmA)
+
+### Clash Games
+- `code` **ClashGames**
+- [Youtube](https://www.youtube.com/clashgames1)
+
+### Puuki
+- `code` **Puuki**
+- [Youtube](https://www.youtube.com/puuki)
+
+### Ark
+- `code` **Ark**
+- [Twitch](https://www.twitch.tv/arkbrawlstars)
+
+### FerreFTW
+- `code` **Ferre**
+- [Youtube](https://www.youtube.com/user/FerreFTW)
+
+### DavidK
+- `code` **DavidK**
+- [Youtube](http://www.youtube.com/c/DavidKPlaybrawlstars)
+
+### gouloulou
+- `code` **gouloulou**
+- [Youtube](https://www.youtube.com/channel/UCBSOZ9tw07TaBO9Q9hlOcqA)
+
+### Grax
+- `code` **Grax**
+- [Youtube](https://www.youtube.com/grax)
+
+### Romain Dot Live
+- `code` **Romain**
+- [Youtube](https://www.youtube.com/channel/UCV3CAvUPaMZai8GxW2fqZAg)
+
+### Aurum TV
+- `code` **Aurum**
+- [Youtube](https://www.youtube.com/autv)
+
+### Vinho
+- `code` **Vinho**
+- [Youtube](https://www.youtube.com/user/MrVinhoO)
+
+### Axael TV
+- `code` **Axael**
+- [Youtube](https://www.youtube.com/channel/UCvyoMrWm0_h_7NDgVlpCxjA)
+
+### Kius
+- `code` **Kius**
+- [Youtube](https://www.youtube.com/c/KiusYT)
+
+### GizmoSpika
+- `code` **Gizmo**
+- [Youtube](https://www.youtube.com/gizmospike)
+
+### Consty
+- `code` **Consty**
+- [Youtube](https://www.youtube.com/consty)
+
+### PitBullFera
+- `code` **pitbullfera**
+- [Youtube](https://www.youtube.com/user/KevinnPires242517)
+
+### Spuik Gaming
+- `code` **Spuik**
+- [Facebook](https://www.facebook.com/Spiuk-Gaming-230984034477465/)
+
 **NOTE**: It took me really long to find all these codes and there are still many missing (_I am sure about that_), but it will take only about a minute to support your favourite content creator. So do support your favourite content creator!
 
-**NOTE2**: All the codes above are tested!
+**NOTE2**: I have attempted to test all of the codes but if any are found to be wrong please inform me!
 
 ## Supercell MAKE
 Although this article is all about supercell creators, but I though Supercell Make deserves a mention as well. It is another of the supercell program that tries to involve it's users (_that's us_). They run various campaigns over there so that users can make various skins for brawl stars and the selected ones win amazing prize money! So if you are good at making 3D characters then you definitely need to head to the supercell make platform. Start making some amazing skins and get your hands on that prize money. All the best to you!
