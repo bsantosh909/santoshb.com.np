@@ -76,3 +76,8 @@ Make sure your PRs are not among these:
 
 ## **Anything else I need to know?**
 These are just the basics you should be knowing about Hacktoberfest. But surely there are lot more things which is better if known. You can learn more about the Hacktoberfest event [here](https://hacktoberfest.digitalocean.com/details) and [here](https://hacktoberfest.digitalocean.com/faq)!
+
+## **Hacktoberfest 2020**
+Hacktoberfest 2020 is almost on the way as this article is being updated for the event happening soon. There are few things to be noted for this year's hacktoberfest event. Most of those are already same as the previous years but still knowing them all is always good idea.
+- Once you are done with 4 pull requests, your PR will have to go through 1 week of  review window. If maintainers report it as spam you will have to again make the count to 4 and wait for another week of review window.
+- Any sort of spam PR or attempt to +1 your count will be removed i.e. marked as ineligible for completion. **Quality over quantity**

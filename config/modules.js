@@ -9,8 +9,7 @@ export default {
 	buildModules: [
 		'@nuxtjs/pwa',
 		'@nuxtjs/tailwindcss',
-		'@nuxtjs/google-analytics',
-		'@nuxt/components'
+		'@nuxtjs/google-analytics'
 	],
 	// Sitemap configuration
 	sitemap: {
@@ -48,6 +47,7 @@ export default {
 			prism: {
 				theme: 'prism-themes/themes/prism-material-oceanic.css'
 			}
-		}
+		},
+		fullTextSearchFields: ['title', 'subtitle', 'slug', 'summary']
 	}
 }

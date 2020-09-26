@@ -1,7 +1,7 @@
 import { hooks, moduleConfig } from './config';
 
 export default {
-	mode: 'universal',
+	components: true,
 	head: {
 		link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Acme|Slabo+27px&display=swap' }]
 	},
