@@ -1,9 +1,10 @@
 ---
-title: Brief Introduction to Hacktoberfest
+title: Brief Introduction to Hacktoberfest 2020
 subtitle: Open source and free rewards!
 author: TheLearneer
 banner: hacktoberfest.png
 created: 2020-01-28
+updated: 2020-09-26
 summary: >
   Hacktoberfest is an annually happening event for the whole month of October.
   If you know about github and open source projects then you should read this article.
@@ -50,6 +51,7 @@ To obtain the T-shirt you will have to complete specific amount of contributions
 The amount of PRs to be completed are:
 - Hacktoberfest No.4 (2018): **4**
 - Hacktoberfest No.5 (2019): **5**
+- Hacktoberfest No.6 (2020): **4**
 
 ## **When will I receive the T-shirt?**
 T-shirts are awarded on a first-come, first-serve basis to the first 50,000 participants who successfully completed the Hacktoberfest challenge. You will be receiving mail when you have completed the challenge. Further details will be provided with the mail.
