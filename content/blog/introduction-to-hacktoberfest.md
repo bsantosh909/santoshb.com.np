@@ -81,3 +81,8 @@ These are just the basics you should be knowing about Hacktoberfest. But surely 
 Hacktoberfest 2020 is almost on the way as this article is being updated for the event happening soon. There are few things to be noted for this year's hacktoberfest event. Most of those are already same as the previous years but still knowing them all is always good idea.
 - Once you are done with 4 pull requests, your PR will have to go through 2 weeks (14 days) of  review window. If maintainers report it as spam you will have to again make the count to 4 and wait for another  2 weeks of review window.
 - Any sort of spam PR or attempt to +1 your count will be removed i.e. marked as ineligible for completion. **Quality over quantity**
+- Initially all the repositories are ineligible for the hacktoberfest event itself. Which means maintainers have to opt-in their repository this time by adding the **hacktoberfest** label to their respository keywords.
+- You can report an ineligible repository by going to this link [here](https://hacktoberfest.digitalocean.com/report)
+- According to the havktoberfest website your PR will have to be accepted by maintainer by merging it, adding the "hacktoberfest-accepted" label to it, or approving it.
+
+There is more to the event itself and the team has really worked to reduce the spam pull requests. So make sure to go through the hacktoberfest website itself to learn more.
