@@ -11,36 +11,55 @@
 		-->
 		<h1 class="text-5xl text-center font-bold">Blog Articles</h1>
 		<div class="italic mb-16">
-			Here are some of the articles that are written over time to share the knowledge, share information, help you get better (by telling general mistakes and possibilities) for various stuffs! I hope these article will be helpful to you, or maybe you can learn something new after reading these out. Make sure to read them and share your knowledge with me in the comment sections.
+			Here are some of the articles that are written over time to share the
+			knowledge, share information, help you get better (by telling general
+			mistakes and possibilities) for various stuffs! I hope these article will
+			be helpful to you, or maybe you can learn something new after reading
+			these out. Make sure to read them and share your knowledge with me in the
+			comment sections.
 		</div>
 		<div v-for="(article, i) of articles" :key="article.slug" class="p-3 mb-16">
 			<BlogCard :data="article" :index="i" />
 		</div>
 		<div class="my-8">
-			<adsbygoogle adSlot="1056851328" adFormat="fluid" adLayoutKey="-eo+58+6l-e2+5t" />
+			<adsbygoogle
+				adSlot="1056851328"
+				adFormat="fluid"
+				adLayoutKey="-eo+58+6l-e2+5t"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			articles: [],
-			//query: ''
+	export default {
+		data() {
+			return {
+				articles: []
+				//query: ''
+			};
+		},
+		head() {
+			return {
+				title: "Blog - Technology, Programming and Tricks | Santosh Bhandari",
+				description:
+					"Read blog articles written for sharing my knowledge and experience to help and guide with the knowledge that I have."
+			};
+		},
+		async fetch() {
+			this.articles = await this.$content("blog")
+				.only([
+					"slug",
+					"title",
+					"subtitle",
+					"created",
+					"banner",
+					"readingTime",
+					"summary",
+					"tags"
+				])
+				.sortBy("created", "desc")
+				.fetch();
 		}
-	},
-	head() {
-		return {
-			title: 'Blog - Technology, Programming and Tricks | Santosh Bhandari',
-			description: 'Read blog articles written for sharing my knowledge and experience to help and guide with the knowledge that I have.'
-		}
-	},
-	async fetch() {
-		this.articles = await this.$content('blog')
-			.only(['slug', 'title', 'subtitle', 'created', 'banner', 'readingTime', 'summary', 'tags'])
-			.sortBy('created', 'desc')
-			.fetch();
-	}
-}
+	};
 </script>
