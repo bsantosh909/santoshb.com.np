@@ -33,21 +33,8 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				articles: []
-				//query: ''
-			};
-		},
-		head() {
-			return {
-				title: "Blog - Technology, Programming and Tricks | Santosh Bhandari",
-				description:
-					"Read blog articles written for sharing my knowledge and experience to help and guide with the knowledge that I have."
-			};
-		},
-		async fetch() {
-			this.articles = await this.$content("blog")
+		async asyncData({ $content }) {
+			const articles = await $content("blog")
 				.only([
 					"slug",
 					"title",
@@ -60,6 +47,14 @@
 				])
 				.sortBy("created", "desc")
 				.fetch();
+			return { articles };
+		},
+		head() {
+			return {
+				title: "Blog - Technology, Programming and Tricks | Santosh Bhandari",
+				description:
+					"Read blog articles written for sharing my knowledge and experience to help and guide with the knowledge that I have."
+			};
 		}
 	};
 </script>
