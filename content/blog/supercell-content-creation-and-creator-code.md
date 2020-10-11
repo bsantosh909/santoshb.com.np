@@ -588,6 +588,11 @@ This is an attempt to list all the creator codes available. If you find any code
 - `code` **Adda**
 - [Youtube](https://www.youtube.com/user/9476344080)
 
+### Nat With a heart
+
+- `code` **Nat**
+- [Youtube](https://www.youtube.com/channel/UCLgHk71ne0HlwOp1tAv0gNA)
+
 **NOTE**: It took me really long to find all these codes and there are still many missing (_I am sure about that_), but it will take only about a minute to support your favourite content creator. So do support your favourite content creator!
 
 **NOTE2**: I have attempted to test all of the codes but if any are found to be wrong please inform me!
