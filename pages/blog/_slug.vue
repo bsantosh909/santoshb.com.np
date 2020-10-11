@@ -127,6 +127,12 @@
 						property: "og:image",
 						content: `https://santoshb.com.np${this.imageLink}`
 					},
+					{ property: "article:published_time", content: this.article.created },
+					{ property: "article:modified_time", content: this.article.updated },
+					{
+						property: "article:tag",
+						content: this.article.tags ? this.article.tags.toString() : ""
+					},
 					// Twitter
 					{
 						hid: "twitter:title",
