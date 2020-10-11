@@ -8,6 +8,7 @@
 				<img
 					:src="`/img/banners/${data.banner}`"
 					class="border shadow-md object-cover w-11/12 rounded"
+					:alt="`blog banner - ${data.title}`"
 				/>
 			</div>
 			<!-- Body content -->
@@ -68,6 +69,7 @@
 			:src="`/img/banners/${data.banner}`"
 			class="border shadow border-dark-100 h-full hidden lg:block rounded-md -m-3"
 			:class="alignImage ? 'order-last' : 'order-first'"
+			:alt="`blog banner - ${data.title}`"
 		/>
 	</div>
 </template>

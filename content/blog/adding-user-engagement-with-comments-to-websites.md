@@ -60,7 +60,7 @@ Although I would love to mention that disqus is **FREE**. But you do have the op
 Even [my site](https://santoshb.com.np/blog) has various blog articles with disqus comments plugin installed. Which means if you are reading this article on my site then you can let me know in the comments below. If not head over to this article originally posted on my site and let me know _I love when people interact with me!_
 
 <center>
-  <img src="/img/content/commenting-system/disqus.png" class="w-64 md:w-3/6">
+  <img src="/img/content/commenting-system/disqus.png" class="w-64 md:w-3/6" alt="commenting system disqus">
 </center>
 
 ### Facebook
@@ -94,7 +94,7 @@ Although facebook itself is really well known global brand, the commenting syste
 All these features look really promising for sure. I am already thinking of doing a small project to test it out with amazing people like you. If you are eager just like me or if you already use it then let me know in the comments below.
 
 <center>
-  <img src="/img/content/commenting-system/spot.png" class="w-64 md:w-3/6">
+  <img src="/img/content/commenting-system/spot.png" class="w-64 md:w-3/6" alt="commenting system spot.IM">
 </center>
 
 ### HTML Comment Box
@@ -118,7 +118,7 @@ All these features look really promising for sure. I am already thinking of doin
 It is yet another of that amazing stuff which I want to try out someday.. Let me know in the comments below if you are impatient just like me to test it out!
 
 <center>
-  <img src="/img/content/commenting-system/viafoura.png" class="w-64 md:w-3/6">
+  <img src="/img/content/commenting-system/viafoura.png" class="w-64 md:w-3/6" alt="commenting system viafoura">
 </center>
 
 ## List goes on
