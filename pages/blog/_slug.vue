@@ -77,7 +77,7 @@
 			</div>
 			<div class="flex space-x-2">
 				<span
-					class="select-none inline-block bg-gray-300 rounded-full px-3 py-1 my-1 text-sm font-semibold text-dark-900 capitalize"
+					class="select-none inline-block bg-gray-300 rounded-full px-3 py-1 my-1 text-sm font-semibold text-dark-900 capitalize hover:shadow-md"
 					v-for="badge in article.tags"
 					:key="badge"
 				>

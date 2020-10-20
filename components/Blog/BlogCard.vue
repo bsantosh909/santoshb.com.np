@@ -55,7 +55,7 @@
 				</div>
 				<div class="text-center">
 					<span
-						class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-dark-900 mr-2 mb-2 capitalize"
+						class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-dark-900 mr-2 mb-2 capitalize hover:shadow-md"
 						v-for="badge in data.tags"
 						:key="badge"
 					>
