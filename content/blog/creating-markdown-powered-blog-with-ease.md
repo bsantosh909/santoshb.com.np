@@ -5,7 +5,7 @@ author: TheLearneer
 banner: nuxt-markdown-blog.png
 created: 2020-05-31
 summary: >
-  You might have wanted to create a blog. But that's tough right ?? Actually <b>NO</b>! With the awesome tools like Nuxt.js, nuxt-content and the awesome Jamstack concept the task gets easy like never before!
+  How to create a blog with mardown? How to use markdown to create a blog? If those are the question you have then with the awesome tools like Nuxt.js, nuxt-content and the awesome Jamstack concept the task gets easy like never before!
 tags:
   - Jamstack
   - Markdown
