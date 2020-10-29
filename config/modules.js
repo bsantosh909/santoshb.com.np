@@ -2,6 +2,7 @@ export default {
 	// Nuxt.js modules
 	modules: [
 		'@nuxt/content',
+		'@nuxtjs/feed',
 		'@nuxtjs/sitemap',
 		'@nuxtjs/google-adsense'
 	],
@@ -49,5 +50,33 @@ export default {
 			}
 		},
 		fullTextSearchFields: ['title', 'subtitle', 'slug', 'summary']
+	},
+	// Feed configuration
+	feed: async () => {
+		const { $content } = require('@nuxt/content');
+		const posts = await $content('blog', { deep: true, text: true })
+			.only(['slug', 'title', 'summary', 'text'])
+			.fetch();
+		return [{
+			path: 'feed.xml',
+			create(feed) {
+				feed.options = {
+					title: 'Feed',
+					link: 'https://santoshb.com.np/feed.xml',
+					description: 'RSS feed for my blog articles!'
+				}
+				posts.forEach(post => {
+					feed.addItem({
+						title: post.title,
+						id: post.slug,
+						link: `https://santoshb.com.np/blog/${post.slug}`,
+						description: post.summary.replace(/<[^>]*>?/gm, ""),
+						content: post.text
+					})
+				})
+			},
+			cache: 1000 * 60 * 15,
+			type: 'rss2'
+		}]
 	}
 }
