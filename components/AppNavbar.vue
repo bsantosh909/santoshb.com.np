@@ -17,6 +17,7 @@
 				@click="isOpen = !isOpen"
 				type="button"
 				class="flex text-gray-200 focus:outline-none"
+				aria-label="Navbar toggler"
 			>
 				<svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
 					<path
@@ -64,18 +65,18 @@
 						to: "/"
 					},
 					/*
-						{
-							title: 'Portfolio',
-							to: '/portfolio/'
-						},*/
+							{
+								title: 'Portfolio',
+								to: '/portfolio/'
+							},*/
 					{
 						title: "Blog",
 						to: "/blog/"
 					} /*
-						{
-							title: 'Writings',
-							to: '/writings/'
-						},*/,
+							{
+								title: 'Writings',
+								to: '/writings/'
+							},*/,
 					{
 						title: "Contact",
 						to: "/contact/"
