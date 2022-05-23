@@ -67,7 +67,7 @@
     <!-- Image for large devices -->
     <img
       :src="`/img/banners/${data.banner}`"
-      class="border shadow border-dark-100 h-full hidden lg:block"
+      class="border shadow border-dark-100 h-full max-w-xl hidden lg:block"
       :class="alignImage ? 'order-last' : 'order-first'"
       :alt="`blog banner - ${data.title}`"
     />
