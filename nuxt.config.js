@@ -1,6 +1,7 @@
 import { hooks, moduleConfig } from "./config";
 
 export default {
+  target: "static",
   components: true,
   router: {
     trailingSlash: true,
@@ -9,7 +10,7 @@ export default {
   css: ["@/assets/css/index.css"],
   plugins: ["@/plugins/disqus"],
   build: {
-    extend(config, ctx) {},
+    // extend(config, ctx) {},
   },
   generate: {
     fallback: true,
