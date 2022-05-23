@@ -1,6 +1,6 @@
 ---
 title: Proper API Response structure {}
-subtitle: Importance, Necessity and Advantages!
+subtitle: Importance & Advantages!
 author: TheLearneer
 banner: api-response-structure.png
 created: 2022-05-23
