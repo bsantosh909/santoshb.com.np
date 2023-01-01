@@ -89,10 +89,11 @@ For e.g. sending this response for API call `https://api.xyz.com/users/1`
 
 ```json
 {
-"message": "Successfully fetched User data",
-"data": {
-  "fullName": "Full Name",
-  "dateOfBirth": "2000-01-01"
+  "message": "Successfully fetched User data",
+  "data": {
+    "fullName": "Full Name",
+    "dateOfBirth": "2000-01-01"
+  }
 }
 ```
 
