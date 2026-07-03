@@ -1,0 +1,327 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/*
+ * Design system — tokens extracted from the Claude Design project
+ * (see design/DESIGN_NOTES.md). Theme switching is driven by
+ * [data-theme] on <html>.
+ */
+:root {
+  --sb-bg: #faf4e9;
+  --sb-surface: #fffdf7;
+  --sb-surface-alt: #f3ecd9;
+  --sb-ink: #16110b;
+  --sb-muted: #544a3c;
+  --sb-faint: #6e6455;
+  --sb-line: #16110b;
+  --sb-chip: #d8cdb6;
+  --sb-nav: rgba(250, 244, 233, 0.82);
+  --sb-link: #c53a1c;
+}
+
+[data-theme='dark'] {
+  --sb-bg: #14100b;
+  --sb-surface: #1f1812;
+  --sb-surface-alt: #1a1510;
+  --sb-ink: #f6efe2;
+  --sb-muted: #c3b9a7;
+  --sb-faint: #998f80;
+  --sb-line: #3c3328;
+  --sb-chip: #4a4036;
+  --sb-nav: rgba(20, 16, 11, 0.82);
+  --sb-link: #ff5a36;
+}
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --color-link: var(--sb-link);
+  --color-bg: var(--sb-bg);
+  --color-surface: var(--sb-surface);
+  --color-surface-alt: var(--sb-surface-alt);
+  --color-ink: var(--sb-ink);
+  --color-muted: var(--sb-muted);
+  --color-faint: var(--sb-faint);
+  --color-line: var(--sb-line);
+  --color-chip: var(--sb-chip);
+  --color-nav: var(--sb-nav);
+}
+
+@theme {
+  --color-accent: #ff5a36;
+  --color-accent-lime: #aee03a;
+  --color-accent-blue: #2f49ff;
+  --color-accent-amber: #ffae2e;
+  --color-accent-pink: #ff4d8d;
+  /* Fixed ink/paper for elements that keep their color in both themes */
+  --color-tint-orange: #ffe6df;
+  --color-tint-blue: #e1e6ff;
+  --color-tint-lime: #eaf6cf;
+  --color-tint-amber: #fff0d6;
+  --color-tint-pink: #ffe0ec;
+  --color-ink-fixed: #16110b;
+  --color-paper-fixed: #faf4e9;
+  --color-panel-fixed: #1f1812;
+  --color-ink-soft-fixed: #cfc6b6;
+  --color-faint-fixed: #8a8170;
+  --color-chip-fixed: #4a4036;
+
+  --font-display: 'Bricolage Grotesque Variable', 'Arial Black', sans-serif;
+  --font-sans: 'Space Grotesk Variable', 'Arial', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Fluid display type scale */
+  --text-hero: clamp(46px, 9.2vw, 128px);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.03em;
+  --text-display-xl: clamp(40px, 7vw, 92px);
+  --text-display-xl--line-height: 0.98;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-lg: clamp(32px, 5vw, 60px);
+  --text-display-lg--line-height: 1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: clamp(26px, 3.6vw, 46px);
+  --text-display-md--line-height: 1.22;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-post-title: clamp(34px, 5.5vw, 62px);
+  --text-post-title--line-height: 1.04;
+  --text-post-title--letter-spacing: -0.025em;
+  --text-lede: clamp(18px, 2.2vw, 23px);
+  --text-lede--line-height: 1.5;
+  --text-sub: clamp(16px, 1.8vw, 20px);
+  --text-sub--line-height: 1.6;
+  --text-card: 15px;
+  --text-card--line-height: 1.6;
+  --text-label: 13px;
+  --text-label--letter-spacing: 0.18em;
+  --text-chip: 11px;
+  --text-chip--letter-spacing: 0.08em;
+  --text-tag: 10px;
+  --text-tag--letter-spacing: 0.04em;
+
+  /* Generated banner art is 1200x630 (OG ratio) — display must not crop it */
+  --aspect-banner: 1200 / 630;
+
+  --radius-tile: 11px;
+  --radius-card-sm: 16px;
+  --radius-card: 20px;
+  --radius-card-lg: 24px;
+  --radius-card-xl: 30px;
+
+  --container-shell: 1180px;
+  --container-article: 760px;
+
+  --animate-marquee: marquee 26s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-pulse-dot: pulse-dot 1.6s infinite;
+  --animate-float-a: float-a 6s ease-in-out infinite;
+  --animate-float-b: float-b 7s ease-in-out infinite;
+  --animate-float-c: float-c 5.5s ease-in-out infinite;
+  --animate-rise: rise 0.9s both;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+    }
+  }
+  @keyframes float-a {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+    50% {
+      transform: translate(0, -26px) rotate(8deg);
+    }
+  }
+  @keyframes float-b {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+    50% {
+      transform: translate(-18px, 18px) rotate(-10deg);
+    }
+  }
+  @keyframes float-c {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0);
+    }
+    50% {
+      transform: translate(20px, 14px) rotate(12deg);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Neo-brutalist border: 1.5px solid, color from border-* utilities. */
+@utility border-brut {
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--sb-line);
+}
+@utility border-brut-2 {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--sb-line);
+}
+
+/* Hard offset shadow; tint with shadow-tint-<accent>. */
+@utility shadow-tint-* {
+  --sb-shadow-color: --value(--color-*);
+}
+@utility shadow-brut {
+  box-shadow: 6px 8px 0 var(--sb-shadow-color, var(--color-accent));
+}
+@utility shadow-brut-sm {
+  box-shadow: 5px 6px 0 var(--sb-shadow-color, var(--color-accent));
+}
+@utility shadow-brut-lg {
+  box-shadow: 8px 10px 0 var(--sb-shadow-color, var(--color-accent));
+}
+
+/* Sticky header backdrop */
+@utility backdrop-nav {
+  backdrop-filter: saturate(140%) blur(10px);
+}
+
+/* Scroll-reveal (driven by the Reveal component) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+/*
+ * Reduced motion: collapse every animation/transition to instant. Covers
+ * rise, floats, pulse, spin, marquee, hover lifts — anything declared
+ * anywhere. `both`-filled keyframes still land on their end state, so
+ * content stays fully visible, just not animated.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Shiki dual themes: rehype-pretty-code ships BOTH palettes as
+ * "--shiki-light-..." and "--shiki-dark-..." vars on elements tagged
+ * data-theme="github-light github-dark" — these rules pick the palette.
+ * (The [data-theme] attribute selector here matches those code elements,
+ * not the site-wide [data-theme] on <html>.)
+ */
+pre[data-theme*=' '],
+pre[data-theme*=' '] span,
+code[data-theme*=' '],
+code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+[data-theme='dark'] pre[data-theme*=' '],
+[data-theme='dark'] pre[data-theme*=' '] span,
+[data-theme='dark'] code[data-theme*=' '],
+[data-theme='dark'] code[data-theme*=' '] span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+/* Clickable headings (rehype-autolink-headings behavior: 'wrap') */
+.prose :is(h2, h3, h4) {
+  scroll-margin-top: 6.5rem;
+}
+.prose :is(h2, h3, h4) > a {
+  color: inherit;
+  text-decoration: none;
+}
+.prose :is(h2, h3, h4) > a:hover {
+  color: var(--color-accent);
+}
+.prose :is(h2, h3, h4) > a:hover::after {
+  content: ' #';
+  color: var(--color-accent-lime);
+}
+
+/* Blocks sit on the theme surface, not shiki's stark white / slate. */
+pre[data-theme*=' '] {
+  background-color: var(--sb-surface-alt);
+}
+[data-theme='dark'] pre[data-theme*=' '] {
+  background-color: var(--sb-surface);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--sb-bg);
+  color: var(--sb-ink);
+  font-family: var(--font-sans);
+  transition:
+    background 0.4s,
+    color 0.4s;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}

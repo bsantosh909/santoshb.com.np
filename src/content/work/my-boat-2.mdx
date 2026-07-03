@@ -1,0 +1,36 @@
+---
+name: My Boat 2
+url: https://www.myboat2.com
+summary: Boat ride platform for the US — book rides on the water, ride-hailing style, app included.
+accent: lime
+order: 4
+featured: false
+role: Backend & Frontend
+period: ''
+stack:
+  - Node.js
+  - React
+tags:
+  - label: Backend
+    accent: lime
+  - label: Frontend
+    accent: orange
+---
+
+## Overview
+
+My Boat 2 is a ride platform for boats in the US — think ride-hailing, on the
+water. It ships as an app ([on the App
+Store](https://apps.apple.com/us/app/my-boat-2/id1582824320)) backed by a full
+booking platform.
+
+I built the backend in Node.js and the React-powered frontend experience.
+
+## The interesting bit
+
+Ride-hailing has a classic race condition at its heart: one ride, many
+captains, and only one of them can win it. Getting that right — so two people
+could never accept the same ride no matter how perfectly their taps collided —
+meant thinking hard about locking, request ordering, and all the edge cases
+real-time systems love to hide. That problem, more than any single feature,
+is what made this project fun.
