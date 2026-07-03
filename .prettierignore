@@ -1,0 +1,5 @@
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+# Prettier mangles MDX comments ({/* */}) via the markdown parser
+*.mdx
