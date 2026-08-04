@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import type { ComponentType } from 'react'
+import type { TocEntry } from '#/features/design-system/lib/toc'
 
 const accentSchema = z.enum(['orange', 'blue', 'lime', 'amber', 'pink'])
 
@@ -33,12 +34,14 @@ export interface ProjectMeta extends ProjectFrontmatter {
 
 export interface ProjectEntry {
   meta: ProjectMeta
+  toc: ReadonlyArray<TocEntry>
   Component: ComponentType<{ components?: Record<string, ComponentType> }>
 }
 
 interface ProjectModule {
   default: ProjectEntry['Component']
   frontmatter: unknown
+  toc: ReadonlyArray<TocEntry>
 }
 
 const modules = import.meta.glob<ProjectModule>('../../../content/work/*.mdx', {
@@ -57,7 +60,11 @@ export class WorkContent {
       throw new Error(`Invalid frontmatter in ${path}: ${parsed.error.message}`)
     }
     const slug = path.replace(/^.*\//, '').replace(/\.mdx$/, '')
-    return { meta: { ...parsed.data, slug }, Component: mod.default }
+    return {
+      meta: { ...parsed.data, slug },
+      toc: mod.toc,
+      Component: mod.default,
+    }
   }
 
   static all(): ReadonlyArray<ProjectMeta> {

@@ -7,7 +7,7 @@ import { PostCtaBanner } from '#/features/blog/components/PostCtaBanner'
 import { PostHeader } from '#/features/blog/components/PostHeader'
 import { PostNav } from '#/features/blog/components/PostNav'
 import { PostTagList } from '#/features/blog/components/PostTagList'
-import { PostToc } from '#/features/blog/components/PostToc'
+import { Toc } from '#/features/design-system/components/Toc'
 
 export function BlogPostPage() {
   const { slug } = useParams({ from: '/blog/$slug' })
@@ -22,7 +22,7 @@ export function BlogPostPage() {
     <div className="mx-auto w-full max-w-shell px-5 md:px-7 py-10 md:py-16">
       <div className="flex items-start gap-10">
         <aside className="sticky top-24 hidden w-60 flex-none lg:block">
-          <PostToc toc={post.toc} />
+          <Toc toc={post.toc} />
         </aside>
         <main className="mx-auto w-full max-w-article min-w-0">
           <PostHeader meta={post.meta} />

@@ -1,17 +1,18 @@
-import type { TocEntry } from '#/features/blog/lib/blog-content'
+import type { TocEntry } from '#/features/design-system/lib/toc'
 
-interface PostTocProps {
+interface TocProps {
   toc: ReadonlyArray<TocEntry>
 }
 
-export function PostToc({ toc }: PostTocProps) {
+/** On-this-page nav for long MDX documents (blog posts, deep project pages). */
+export function Toc({ toc }: TocProps) {
   if (toc.length < 2) return null
   return (
     <nav
       aria-label="Table of contents"
       className="rounded-card-sm border-brut bg-surface p-5"
     >
-      <div className="mb-3 font-mono text-chip uppercase text-faint">
+      <div className="mb-3 font-mono text-eyebrow uppercase text-faint">
         On this page
       </div>
       <ul className="m-0 flex list-none flex-col gap-2 p-0">

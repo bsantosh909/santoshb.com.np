@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import type { ComponentType } from 'react'
+import type { TocEntry } from '#/features/design-system/lib/toc'
 
 const frontmatterSchema = z.object({
   title: z.string().min(1),
@@ -21,11 +22,7 @@ export interface ReadingTime {
   text: string
 }
 
-export interface TocEntry {
-  depth: 2 | 3
-  text: string
-  id: string
-}
+export type { TocEntry }
 
 export interface PostMeta extends PostFrontmatter {
   slug: string
