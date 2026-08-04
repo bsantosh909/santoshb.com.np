@@ -1,18 +1,23 @@
 ---
 name: The Genesys
 url: https://www.thegenesys.tech/
-summary: 3D printing meets IoT — Raspberry Pi-driven printers, with NFTs keeping records on-chain.
+summary: A marketplace where buying a 3D design ends in a physical object — cloud slicing, encrypted delivery, and a Linux hub wired to the printer in your room.
 accent: blue
 order: 6
 featured: false
-role: Full stack + IoT
+role: Co-lead — backend, frontend, IoT & on-chain
 period: ''
 stack:
   - Node.js
+  - TypeScript
   - React
-  - Tailwind CSS
+  - RabbitMQ
+  - Redis
+  - PostgreSQL
+  - Keycloak
   - Raspberry Pi
-  - NFT
+  - MQTT
+  - Solidity
 tags:
   - label: Backend
     accent: lime
@@ -24,19 +29,213 @@ tags:
     accent: pink
 ---
 
+import { GenesysArchitecture } from '#/features/work/components/GenesysArchitecture'
+
 ## Overview
 
-The Genesys connects the physical and digital: 3D printing driven over IoT,
-with NFTs keeping tamper-proof records of what was made.
+The Genesys is a marketplace for 3D designs where the purchase doesn't end with a
+download — it ends with a physical object. A creator uploads a model. A buyer pays
+for the right to print it. The platform slices that model in the cloud, encrypts
+the result, and streams it to a small Linux hub sitting next to the buyer's
+printer. One click, and a machine in someone's room starts moving.
 
-I built it full stack — Node.js services and a React + Tailwind frontend,
-Raspberry Pi devices orchestrating the printers on the IoT side, and the NFT
-layer for on-chain record-keeping.
+I co-led the build and worked across most of it: the Node.js services, the React
+creator platform, identity and service-to-service auth, the slicing pipeline, the
+on-chain rights layer, and the IoT side all the way down to the device. The
+WordPress storefront and the DevOps platform belonged to other people on the team
+— I have commits in the Flutter app, but it was never my strongest surface.
 
-## Off the beaten path
+<GenesysArchitecture />
 
-This one pulled me furthest from typical web work. I learned how 3D printers
-actually operate, how to drive them reliably from Raspberry Pis over IoT, and
-— on the other end — took a deep dive into NFT minting to put each print's
-record on-chain. Physical hardware fails in ways web servers never do, and
-building around that was half the education.
+## Why it's harder than it sounds
+
+**A dozen services have to trust each other.** Once the system is more than one
+process, "is this request allowed?" stops being a question about users and starts
+being a question about services. A network boundary isn't an answer when
+everything shares a cluster.
+
+**The last mile runs through someone's house.** A creator's model is the entire
+value of the product, and the final step of every transaction is putting a file on
+hardware we don't own and can't inspect. That constraint shaped more of the design
+than anything else.
+
+**Slicing is not a request-response workload.** Turning an STL into printer
+instructions is minutes of CPU, not milliseconds, and demand arrives in bursts
+whenever a design does well. Anything modelled as a synchronous endpoint would
+have fallen over.
+
+**Nobody is ever going to touch the devices again.** Once a hub ships, the only
+way to fix it is over the network, and a bad update means a dead box in a
+stranger's home with no console and no one to press reset.
+
+## One purchase, end to end
+
+Everything below is a zoom-in on one of these steps:
+
+1. A buyer checks out on the storefront. The Sales service reconciles the payment
+   and emits a purchase event.
+2. The NFT service mints a **Right-to-Print** token — the buyer now provably owns
+   a print entitlement, and it's theirs to hold or transfer.
+3. The Slicing Interface queues a job against the profile of the specific printer
+   the buyer's hub is bound to. The STL itself stays in the cloud.
+4. The slicer produces GCode for that one printer. It's encrypted for that one
+   hub, and the Print Server hands it off.
+5. The hub pulls the job over its MQTT connection, decrypts it in the gateway
+   agent, and feeds the printer.
+6. Status streams back while it runs. On completion, a **Proof-of-Print** token is
+   minted against the original entitlement.
+
+The interesting property is that no single step holds the whole secret. The
+storefront never sees GCode, the hub never sees an STL, and the chain never sees
+either.
+
+## The services
+
+A Node.js and TypeScript monorepo, deployed as separate services:
+
+| Service | Owns |
+| --- | --- |
+| Creator API | Model uploads, metadata, the creator-facing catalogue |
+| Sales | Checkout, payment reconciliation across providers |
+| Ownership | Who holds what entitlement, and what state it's in |
+| NFT | Minting and reading the on-chain rights records |
+| Slicing Interface | Job intake, printer profiles, slicer orchestration |
+| Print Server | Job delivery, device job state, status ingest |
+| Auth | The gateway everything else authenticates through |
+| Handshake | Key registration and signature verification between services |
+
+Alongside them: Keycloak for identity, RabbitMQ for the async spine, Redis for
+hot state, and Postgres for everything durable.
+
+There are two ways for one service to reach another. Synchronously, over internal
+REST with JWTs carrying service-level scopes — used when a caller genuinely needs
+an answer before it can continue. Asynchronously, over RabbitMQ, for everything
+else. The async path runs
+as a three-layer pipeline: a **pre-process** stage that validates and rejects
+early, a **process** stage that does the real work, and a **post-process** stage
+for side effects that shouldn't be able to fail the main job. Failures retry with
+exponential backoff and land in a dead-letter queue rather than disappearing.
+
+Splitting side effects into their own stage was one of those decisions that looked
+fussy on a whiteboard and paid for itself repeatedly. A flaky notification should
+never roll back a print.
+
+### Zero-trust between services
+
+Every service generates a keypair at boot and registers its public key with the
+Handshake service. From then on, each outbound internal call carries two things: a
+Keycloak-issued server token, and a signature over the request made with the
+caller's private key. The receiver verifies the signature against the registered
+public key before it does any work at all.
+
+It means a leaked token isn't enough on its own, and a service that somehow gets
+into the cluster without being enrolled can't talk to anything. Getting the boot
+ordering right — a service that comes up before Handshake, or after a key
+rotation — was more of the work than the crypto was.
+
+### Identity in one place
+
+One Keycloak realm covers everyone: buyers, creators, admins, and the services
+themselves. Roles and permissions live there rather than being re-implemented per
+service, each service is registered as a client with its own scopes, and
+machine-to-machine auth uses OAuth 2.0 client credentials.
+
+The rule we held to was that only the auth gateway talks to Keycloak directly.
+Every other service takes a validated identity from the gateway and trusts the
+scopes on it. Twelve services each holding their own Keycloak integration is
+twelve places for an auth bug to live.
+
+## Keeping the model out of the buyer's hands
+
+This is the problem the whole platform is arranged around. A creator's STL is the
+asset. If it can be extracted from a device, there is no marketplace.
+
+### Slicing in the cloud
+
+The usual desktop workflow — download the model, slice it locally, print — was
+never an option, because it hands the source file to the buyer. So slicing moved
+server-side: Orca Slicer runs in the cloud against a profile for the exact printer
+the job is destined for, and only the output travels.
+
+That output is single-purpose by construction. GCode is a stream of movements for
+one machine with one set of parameters; it isn't a model, and you can't
+meaningfully re-derive one from it. It's encrypted for the target hub, so a job
+lifted off the wire or off the device's storage is inert anywhere else.
+
+Because slicing is slow and bursty, jobs go through the queue rather than an
+endpoint, and the interface service tracks job state so the buyer sees progress
+instead of a spinner.
+
+### Rights on-chain
+
+Two Solidity contracts on Polygon mainnet hold the record. **Right-to-Print** is
+minted at purchase and represents the entitlement itself — it's a real token, so
+it can be held, transferred, or resold rather than being a row in our database
+that only we can see. **Proof-of-Print** is minted when a print actually
+completes, which gives creators a tamper-evident record of what was made from
+their work.
+
+Putting entitlements on-chain also made the ownership question cleaner internally:
+the chain is the source of truth about what someone is allowed to print, and the
+services read from it rather than each keeping their own opinion.
+
+## The edge: Hermes
+
+Hermes is the hub — an off-the-shelf single-board computer running Genesys OS, a
+version-controlled Linux image we build rather than a machine someone configures
+by hand. Every hub in the field runs a known image at a known version.
+
+Onboarding happens over a hotspot: the hub brings up its own network, the mobile
+app hands it Wi-Fi credentials, and it registers itself. From that point it's
+bound to one printer by hardware address, which is what makes "encrypt this job
+for this device" meaningful.
+
+The Printer Gateway Agent is the part that actually drives hardware, and it speaks
+two dialects, because the printer world hasn't settled on one:
+
+- **Marlin** printers, through the local OctoPrint REST API
+- **Klipper** printers, over a WebSocket connection
+
+The agent also handles job decryption, file lifecycle on a device with very little
+storage, and streaming status back up. A process supervisor sits underneath it all
+and restarts anything that dies, because the alternative is asking a customer to
+unplug their printer.
+
+This was the part of the project that taught me the most. Physical hardware fails
+in ways web servers simply don't — a printer that reports success while the print
+has visibly failed, a filament jam that looks identical to a paused job, a hub
+that loses power mid-transfer. Every one of those had to become a state the system
+understands rather than an exception it throws.
+
+## Shipping updates to hardware you can't reach
+
+Fleet management runs on Kaa over MQTT. Each hub registers uniquely and holds a
+persistent encrypted connection, which is what makes both directions possible:
+telemetry up, commands down.
+
+Updates are versioned semantically, with version locks between the OS image, the
+gateway agent, and the services — an agent that requires a newer OS simply won't
+install on a hub that hasn't got there yet. Rollouts go to cohorts rather than the
+whole fleet, using endpoint filtering to pick which hubs get a build, so a bad
+release is contained to the group that received it.
+
+Commands queue for days. A hub that's been unplugged for a long weekend comes
+back, drains the queue, and catches up. Designing for the offline case first is
+the difference between a fleet you can operate and a pile of bricks.
+
+The broader lesson: OTA can't be retrofitted. If the first version ships without a
+safe update path, there's no safe way to add one later — the devices you'd need to
+fix are the devices you can't reach.
+
+## What it taught me
+
+This project pulled me further from ordinary web work than anything else I've
+built. I learned how 3D printers actually behave, how to drive them reliably from
+a small Linux board, how to reason about a security model where the last hop is
+hardware you don't control, and — at the other end of the stack — how to put
+meaningful records on-chain rather than minting tokens for their own sake.
+
+The genuinely hard bugs were never inside a single service. They lived in the
+seams: between the queue and the slicer, between the chain and the ownership
+model, between a hub's idea of a job's state and the platform's. Co-leading it
+meant spending as much time on those boundaries as on any code I wrote.

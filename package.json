@@ -11,6 +11,7 @@
     "generate-routes": "tsr generate",
     "build": "node scripts/prebuild.mjs && vite build && node scripts/postbuild.mjs",
     "banners": "node scripts/generate-banners.mjs",
+    "diagrams": "node scripts/generate-diagrams.mjs",
     "icons": "node scripts/generate-icons.mjs",
     "portraits": "node scripts/generate-portraits.mjs",
     "screenshots": "node scripts/generate-screenshots.mjs",
