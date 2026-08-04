@@ -98,8 +98,10 @@
   --text-card--line-height: 1.6;
   --text-label: 13px;
   --text-label--letter-spacing: 0.18em;
-  --text-chip: 11px;
-  --text-chip--letter-spacing: 0.08em;
+  /* Not `--text-chip`: `--color-chip` already owns that name, and a `text-chip`
+     utility resolves to the color, silently dropping this size. */
+  --text-eyebrow: 11px;
+  --text-eyebrow--letter-spacing: 0.08em;
   --text-tag: 10px;
   --text-tag--letter-spacing: 0.04em;
 

@@ -10,7 +10,7 @@ export function CreatorCodeTable({ codes }: CreatorCodeTableProps) {
     <div className="not-prose my-6 overflow-x-auto rounded-card-sm border-brut">
       <table className="w-full border-collapse bg-surface text-left text-sm">
         <thead>
-          <tr className="bg-surface-alt font-mono text-chip uppercase text-faint">
+          <tr className="bg-surface-alt font-mono text-eyebrow uppercase text-faint">
             <th className="border-b-2 border-line px-4 py-3">Creator</th>
             <th className="border-b-2 border-line px-4 py-3">Find them</th>
             <th className="border-b-2 border-line px-4 py-3">

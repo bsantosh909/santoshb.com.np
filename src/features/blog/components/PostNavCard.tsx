@@ -18,7 +18,7 @@ export function PostNavCard({ post, direction }: PostNavCardProps) {
         isNext ? 'text-right shadow-tint-accent' : 'shadow-tint-accent-blue',
       )}
     >
-      <div className="font-mono text-chip uppercase text-faint">
+      <div className="font-mono text-eyebrow uppercase text-faint">
         {isNext ? 'Next →' : '← Previous'}
       </div>
       <div className="mt-1.5 font-display text-lg font-bold">{post.title}</div>

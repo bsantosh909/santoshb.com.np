@@ -13,7 +13,7 @@ export function ProjectFacts({ project }: ProjectFactsProps) {
     <dl className="mt-8 flex flex-col gap-5 rounded-card-sm border-brut bg-surface p-5.5">
       {project.role ? (
         <div>
-          <dt className="font-mono text-chip uppercase text-faint">Role</dt>
+          <dt className="font-mono text-eyebrow uppercase text-faint">Role</dt>
           <dd className="m-0 mt-1.5 text-card font-semibold text-ink">
             {project.role}
           </dd>
@@ -21,7 +21,9 @@ export function ProjectFacts({ project }: ProjectFactsProps) {
       ) : null}
       {project.period ? (
         <div>
-          <dt className="font-mono text-chip uppercase text-faint">Period</dt>
+          <dt className="font-mono text-eyebrow uppercase text-faint">
+            Period
+          </dt>
           <dd className="m-0 mt-1.5 text-card font-semibold text-ink">
             {project.period}
           </dd>
@@ -29,7 +31,7 @@ export function ProjectFacts({ project }: ProjectFactsProps) {
       ) : null}
       {project.stack.length > 0 ? (
         <div>
-          <dt className="font-mono text-chip uppercase text-faint">Stack</dt>
+          <dt className="font-mono text-eyebrow uppercase text-faint">Stack</dt>
           <dd className="m-0 mt-2.5 flex flex-wrap gap-2">
             {project.stack.map((item) => (
               <span

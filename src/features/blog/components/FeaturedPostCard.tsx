@@ -23,7 +23,7 @@ export function FeaturedPostCard({ post }: FeaturedPostCardProps) {
       <div className="absolute -bottom-14 left-1/3 size-35 animate-float-b rounded-full bg-accent opacity-35 blur-sm" />
       <div className="relative md:col-span-3">
         <div>
-          <span className="rounded-md border border-accent-lime px-2.5 py-1 font-mono text-chip uppercase text-accent-lime">
+          <span className="rounded-md border border-accent-lime px-2.5 py-1 font-mono text-eyebrow uppercase text-accent-lime">
             Latest · {post.tags[0] ?? 'Notes'}
           </span>
           <div className="mt-3 font-mono text-xs text-faint-fixed">
