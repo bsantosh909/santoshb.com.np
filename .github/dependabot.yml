@@ -1,0 +1,28 @@
+# Routine version updates. Security updates are a separate repo setting
+# (already enabled) and open on their own as soon as a patch is published —
+# this file only governs the scheduled, non-security bumps.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: build
+      include: scope
+    # Minor and patch bumps arrive as two grouped PRs rather than dozens.
+    # Majors are deliberately left out so they come individually — React,
+    # TanStack and Vite majors need reading release notes, not merging.
+    groups:
+      production-minor-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-minor-patch:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
