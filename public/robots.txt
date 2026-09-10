@@ -1,5 +1,25 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Everything here is meant to be read, by search crawlers and AI agents alike.
 User-agent: *
 Disallow:
 
+# Named explicitly so the intent survives any future tightening of the rule above.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bingbot
+Disallow:
+
 Sitemap: https://www.santoshb.com.np/sitemap.xml
+
+# Structured summary of the site for LLMs — https://llmstxt.org
+# https://www.santoshb.com.np/llms.txt

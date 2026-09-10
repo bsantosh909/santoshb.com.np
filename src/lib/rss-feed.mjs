@@ -40,7 +40,8 @@ export function buildRssFeed() {
       return {
         slug: file.replace(/\.mdx$/, ''),
         title: data.title,
-        summary: data.summary ?? '',
+        summary: data.seoDescription ?? data.summary ?? '',
+        draft: data.draft ?? false,
         date: new Date(data.updated ?? data.created),
         body: content.trim(),
       }

@@ -1,5 +1,5 @@
 import { SiteConfig } from '#/features/seo/lib/site-config'
-import type { PostMeta } from '#/features/blog/lib/blog-content'
+import type { FaqEntry, PostMeta } from '#/features/blog/lib/blog-content'
 
 interface PageSeoInput {
   title: string
@@ -53,12 +53,13 @@ export class Seo {
     }
   }
 
-  /** Full head config for a blog post: meta, canonical and BlogPosting JSON-LD. */
+  /** Full head config for a blog post: meta, canonical and JSON-LD. */
   static article(post: PostMeta): HeadConfig {
     const path = `/blog/${post.slug}/`
     const base = Seo.page({
-      title: SiteConfig.blogTitleTemplate.replace('%s', post.title),
-      description: post.summary,
+      title:
+        post.seoTitle ?? SiteConfig.blogTitleTemplate.replace('%s', post.title),
+      description: post.seoDescription ?? post.summary,
       path,
       image: post.banner ? SiteConfig.bannerUrl(post.banner) : undefined,
       ogType: 'article',
@@ -83,7 +84,11 @@ export class Seo {
         { property: 'article:tag', content: post.tags.join(',') },
       ],
       links: base.links,
-      scripts: [Seo.jsonLd(Seo.blogPostingSchema(post))],
+      scripts: [
+        Seo.jsonLd(Seo.blogPostingSchema(post)),
+        Seo.jsonLd(Seo.breadcrumbSchema(post)),
+        ...(post.faq.length ? [Seo.jsonLd(Seo.faqSchema(post.faq))] : []),
+      ],
     }
   }
 
@@ -95,22 +100,61 @@ export class Seo {
   }
 
   static blogPostingSchema(post: PostMeta): Record<string, unknown> {
+    const url = SiteConfig.absoluteUrl(`/blog/${post.slug}/`)
     return {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: post.title,
-      description: Seo.plainText(post.summary),
+      description: Seo.plainText(post.seoDescription ?? post.summary),
       author: Seo.personSchema(),
+      publisher: Seo.personSchema(),
+      inLanguage: 'en',
       datePublished: post.created.toISOString(),
-      ...(post.updated ? { dateModified: post.updated.toISOString() } : {}),
+      // Google reads dateModified as the freshness signal and treats a missing
+      // one as unknown rather than "never edited" — fall back to publish date.
+      dateModified: (post.updated ?? post.created).toISOString(),
       keywords: post.tags.join(', '),
+      ...(post.tags.length ? { articleSection: post.tags[0] } : {}),
+      ...(post.about.length
+        ? { about: post.about.map((name) => ({ '@type': 'Thing', name })) }
+        : {}),
       ...(post.banner ? { image: SiteConfig.bannerUrl(post.banner) } : {}),
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': SiteConfig.absoluteUrl(`/blog/${post.slug}/`),
-      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
       wordCount: post.readingTime.words,
-      url: SiteConfig.absoluteUrl(`/blog/${post.slug}/`),
+      url,
+    }
+  }
+
+  static faqSchema(faq: ReadonlyArray<FaqEntry>): Record<string, unknown> {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((entry) => ({
+        '@type': 'Question',
+        name: Seo.plainText(entry.question),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: Seo.plainText(entry.answer),
+        },
+      })),
+    }
+  }
+
+  static breadcrumbSchema(post: PostMeta): Record<string, unknown> {
+    const trail = [
+      { name: 'Home', path: '/' },
+      { name: 'Writing', path: '/blog/' },
+      { name: post.title, path: `/blog/${post.slug}/` },
+    ]
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: trail.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: SiteConfig.absoluteUrl(crumb.path),
+      })),
     }
   }
 

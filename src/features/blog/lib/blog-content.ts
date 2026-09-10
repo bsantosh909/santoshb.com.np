@@ -2,11 +2,20 @@ import { z } from 'zod'
 import type { ComponentType } from 'react'
 import type { TocEntry } from '#/features/design-system/lib/toc'
 
+const faqEntrySchema = z.object({
+  question: z.string().min(1),
+  answer: z.string().min(1),
+})
+
 const frontmatterSchema = z.object({
   title: z.string().min(1),
   subtitle: z.string().optional(),
   author: z.string().default('Santosh Bhandari'),
   summary: z.string().min(1),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  faq: z.array(faqEntrySchema).default([]),
+  about: z.array(z.string()).default([]),
   banner: z.string().optional(),
   tags: z.array(z.string()).default([]),
   created: z.coerce.date(),
@@ -15,6 +24,7 @@ const frontmatterSchema = z.object({
 })
 
 export type PostFrontmatter = z.infer<typeof frontmatterSchema>
+export type FaqEntry = z.infer<typeof faqEntrySchema>
 
 export interface ReadingTime {
   minutes: number
