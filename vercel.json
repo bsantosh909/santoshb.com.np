@@ -3,6 +3,19 @@
   "buildCommand": "pnpm run build",
   "outputDirectory": ".output/public",
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "santoshb.com.np"
+        }
+      ],
+      "destination": "https://www.santoshb.com.np/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

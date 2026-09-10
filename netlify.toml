@@ -5,6 +5,15 @@ publish = ".output/public"
 [build.environment]
 NODE_VERSION = "24"
 
+# Canonical host: www is the only host that serves 200s. Non-www is a
+# permanent redirect so both hostnames count as one site for search engines,
+# link equity and analytics. Mirrors the `redirects` rule in vercel.json.
+[[redirects]]
+from = "https://santoshb.com.np/*"
+to = "https://www.santoshb.com.np/:splat"
+status = 301
+force = true
+
 # Vite content-hashed bundles, fonts and prebuilt images — safe to cache forever.
 [[headers]]
 for = "/assets/*"
