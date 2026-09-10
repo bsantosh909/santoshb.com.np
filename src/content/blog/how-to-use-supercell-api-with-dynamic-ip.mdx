@@ -1,58 +1,132 @@
 ---
-title: Working with Supercell API
+title: Using the Supercell API without a static IP
+seoTitle: 'Supercell API Without a Static IP: 2026 Proxy Guide'
 subtitle: Dynamic IP and success!
 author: bsantosh909
 banner: supercell-api.png
 created: 2020-03-07
+updated: 2026-09-10
 summary: >
-  Using the supercell games'  API requires a static IP, which means users doing hobby projects will not be able to use them.
-  Not long after reading this article. I personally have got it working and so will you.
+  The official Supercell games API ties every API key to an IP address, which rules it out for hobby projects on free hosting where the IP keeps changing.
+  There are two ways around it — a free proxy, or a service that re-issues your key on the fly.
+seoDescription: >-
+  Two ways to use the Clash of Clans, Clash Royale and Brawl Stars API on a
+  dynamic IP: the free RoyaleAPI proxy, or a self-hosted token service.
+about:
+  - Supercell
+  - Clash of Clans
+  - Clash Royale
+  - Brawl Stars
+faq:
+  - question: Why does the Supercell API require a static IP?
+    answer: >-
+      Every key you create on the Supercell developer portal is bound to one or
+      more whitelisted IP addresses, and requests from any other address are
+      rejected. It is a security measure, but it makes the API awkward to use
+      from free hosting, where your outbound IP can change at any time.
+  - question: What is the easiest way to use the Supercell API on a dynamic IP?
+    answer: >-
+      As of 2026, the simplest route is the free RoyaleAPI proxy. Create a key
+      on the official developer portal, whitelist the proxy's IP address
+      (45.79.218.79) instead of your own, and send your requests to
+      https://proxy.royaleapi.dev using the same paths as the official API. It
+      works for Clash of Clans, Clash Royale and Brawl Stars.
+  - question: Can I get my Supercell developer account banned for this?
+    answer: >-
+      Using a proxy is a documented, widely used approach and only involves your
+      own API key. Automating logins to the developer portal to re-issue keys is
+      not how Supercell intends the portal to be used, so there is some risk
+      there — use a separate email for it, and never commit those credentials.
+  - question: Does the Supercell API still work on free hosting?
+    answer: >-
+      Yes, but the platform landscape changed. Heroku ended its free tier in
+      November 2022 and Fly.io followed in 2024. Render and Koyeb both still
+      offer free web services that are enough to run a small proxy or token
+      service.
 tags:
   - supercell
   - API
 ---
 
-Almost everyone using the official Supercell games API has shown disagreement with the fact that the official API limit key to IP addresses.
-Lots of the people using the API are using it personally for hobby projects and thus use free services. But that limitation of the Supercell API is causing lots of problem to the free users using the service.
+> **Updated September 2026.** I wrote this in 2020, when Heroku's free tier was
+> still the obvious place to put a hobby project. That is gone, and there is now
+> a much simpler answer than the one I originally described — so the easy option
+> is first, and my original approach follows it.
 
-**Thus to overcome that issue, I have though of this work around.**
+Almost everyone using the official Supercell games API has shown disagreement with the fact that the official API limits keys to IP addresses.
+Lots of the people using the API are using it personally for hobby projects and thus use free services. But that limitation of the Supercell API — which applies to Clash of Clans, Clash Royale and Brawl Stars alike — is causing lots of problem to the free users using the service.
 
-## **How does it actually work?**
+There are two ways around it. One is a proxy, which is about five minutes of
+work. The other is the service I built, which re-issues your key whenever your
+IP changes.
 
-- It logins to the developer portal using the mail and password provided through the config.
+## The easy way: use a proxy
+
+If all you need is for the API to answer your requests, you do not need to solve
+the dynamic-IP problem at all — you can point at a proxy that already has a
+fixed IP and let it forward your calls.
+
+[RoyaleAPI](https://docs.royaleapi.com/proxy.html) runs one for free, and it
+covers Clash of Clans, Clash Royale and Brawl Stars:
+
+- Create a key on the official developer portal as usual
+- Whitelist `45.79.218.79` — the proxy's IP — instead of your own
+- Send your requests to `https://proxy.royaleapi.dev`, keeping the same paths
+
+So a Clash of Clans call becomes:
+
+```
+https://proxy.royaleapi.dev/v1/clans/%232ABC123
+```
+
+Your key never leaves your own control, and there is nothing to host. **If this
+covers your use case, stop here** — the rest of this article is the harder path,
+and it only makes sense if you specifically want to keep talking to the official
+endpoint directly.
+
+## The other way: re-issue the key yourself
+
+**To overcome that issue without a proxy, I thought of this work around.**
+
+## How does it actually work?
+
+- It logs in to the developer portal using the mail and password provided through the config.
 - It then fetches the available API keys and checks if any key has the current IP whitelisted.
 - If found returns the token, otherwise generate a new one for the current IP and return it.
 - All the requests to the Official API are made then using the generated key
 
-## **That sounds risky!!**
+## That sounds risky!!
 
-Well I am not sure about it to be honest but I am pretty sure that things should be fine unless you are doing something really wired! Although you should be aware of these stuffs:
+It is a fair question. This is not a documented use of the developer portal, so you should go in aware of these things:
 
-- You are using your mail and password to login to the developer site so you should always make sure then are not publicly posted anywhere! `Important`
-- This is not how supercell want's you to access the developer site and create a token and supercell might take actions against you, so make sure to use alternative mails for this purpose..
-- Use this method until and unless you are able to get yourself with a **static IP**. If you get one, try to opt out of this method as soon as possible!
-  If you are doing what is mentioned above, you should be safe!
+- You are using your mail and password to login to the developer site so you should always make sure they are not publicly posted anywhere! `Important`
+- This is not how supercell wants you to access the developer site and create a token, and supercell might take action against you, so make sure to use an alternative mail for this purpose.
+- Use this method only until you can get yourself a **static IP**, or move to the proxy above. If you get one, opt out of this method as soon as you can.
 
-## **What extra can I do with it?**
+## What extra can I do with it?
 
 You can **customize** the service as per your needs. If you need to save the responses in some database for analytics purposes then you can simply edit the route files i.e. `{game}/routes/{file}` and customize it as per the need. You can even add custom routes, remove the routes available or modify the available routes as per the requirements.
 
-## **Heard enough! How do I use it?**
+## Heard enough! How do I use it?
 
-Yeah I have talked enough as well. The first thing is, the service is built using _express_ and contains a _index.js_ file to be started with. So all you got to do is run the file through command line as `node index.js`. But well I don't think you will be running it on your local machine. So I have some steps you can follow to host it over heroku. I do consider you already know about **heroku** and **github**.
+Yeah I have talked enough as well. The service is built using _express_ and contains an _index.js_ file to be started with, so locally all you got to do is run `node index.js`. But you are not going to want this running on your own machine, so it needs somewhere to live.
+
+This is the part that has aged. The original version of this article walked
+through Heroku's free tier, which ended in November 2022; Fly.io's free
+allowance went the same way in 2024. As of 2026 the free tiers worth looking at
+are **Render** and **Koyeb** — either gives you a small web service, which is
+all this needs. The shape of the setup is the same on both:
 
 - Fork this repo [bsantosh909/supercell-api](https://github.com/bsantosh909/supercell-api)
 - Update the **config.js** to enable the API you want to use
-- Create a new project at heroku
-- Connect the heroku app to the forked repo (one at your profile)
-- Enable automatic deploys and select `heroku` branch for it (_The heroku branch is setup for hosting at heroku_)
-- In the setting tab add environment variables `GLOBAL_MAIL`, `GLOBAL_PASS`, `CLASH_MAIL`, `CLASH_PASS`, `ROYALE_MAIL`, `ROYALE_PASS`, `BRAWL_MAIL`, `BRAWL_PASS`
+- Create a new web service on your platform of choice and point it at your fork
+- Deploy from `master`, and set the start command to `node index.js` (_the `heroku` branch is still there from the original setup, but it is only useful on Heroku itself_)
+- Add the environment variables `GLOBAL_MAIL`, `GLOBAL_PASS`, `CLASH_MAIL`, `CLASH_PASS`, `ROYALE_MAIL`, `ROYALE_PASS`, `BRAWL_MAIL`, `BRAWL_PASS`
   - Set `GLOBAL_MAIL` and `GLOBAL_PASS` if you have the mail and password same over all the developer portals
   - Otherwise set the other variables with the individual values of mail and password over the respective developer portals
-  - **NOTE:** `GLOBAL_MAIL` and `GLOBAL_PASS` Will surpass values of other relative variables
+  - **NOTE:** `GLOBAL_MAIL` and `GLOBAL_PASS` will supersede values of other relative variables
 
-Doing all the steps mentioned above, you will have a working version of your service that works to receive data from the official API and works just like it. But currently due to the limitation of Heroku, your API will sleep after 30 minutes of inactivity. Well it will not stop working but after that time the initial request will take a longer time.
-To overcome this limitation you can use service like [UptimeRobot](https://uptimerobot.com)
+That gets you a working service that returns data from the official API and behaves just like it. One thing has carried over from the Heroku days: free tiers still spin down after a stretch of inactivity, so the first request after a quiet spell is slow. Worth knowing, but not worth papering over with a keep-alive pinger — platforms now generally read that as abusing the free tier.
 
 ```js[config.js]
 // Enabling the games
@@ -75,14 +149,13 @@ exports.brawl = {
 };
 ```
 
-## **How to use with full control?**
+## How to use with full control?
 
 Technically it is possible by extracting the core of the project i.e. `util/tokener.js` in the github repository. This file is the reason behind the success of this concept. So if you want to have completely control over how you do stuffs while having this awesome feature, you can simply get the file from the github repo and use as your requirements.
 
-## **How can I believe you are not lying?**
-
-Well I can understand it's hard to believe something you just read up on internet. But I got a proof of concept to prove my words. [**CLICK HERE FOR PROOF OF CONCEPT**](https://statscell.herokuapp.com)
-
-## **Anything else?**
+## Anything else?
 
 Thats all from me. But if you got anything you can contact me through my contact mail. But if it is some Bug or feature idea, simply report it over at the original Repository. I will be more than happy to hear feedback from you guys.
+
+If you play the games rather than build against them, my other Supercell write-up
+covers [creator codes and how to use them](/blog/supercell-content-creation-and-creator-code/).

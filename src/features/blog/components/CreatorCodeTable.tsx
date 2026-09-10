@@ -5,9 +5,9 @@ interface CreatorCodeTableProps {
   codes: ReadonlyArray<CreatorCode>
 }
 
-export function CreatorCodeTable({ codes }: CreatorCodeTableProps) {
+function CodeTable({ codes }: CreatorCodeTableProps) {
   return (
-    <div className="not-prose my-6 overflow-x-auto rounded-card-sm border-brut">
+    <div className="overflow-x-auto rounded-card-sm border-brut">
       <table className="w-full border-collapse bg-surface text-left text-sm">
         <thead>
           <tr className="bg-surface-alt font-mono text-eyebrow uppercase text-faint">
@@ -46,6 +46,35 @@ export function CreatorCodeTable({ codes }: CreatorCodeTableProps) {
           ))}
         </tbody>
       </table>
+    </div>
+  )
+}
+
+export function CreatorCodeTable({ codes }: CreatorCodeTableProps) {
+  const verified = codes.filter((entry) => entry.verified)
+  const unverified = codes.filter((entry) => !entry.verified)
+
+  return (
+    <div className="not-prose my-6 flex flex-col gap-4">
+      <CodeTable codes={verified.length ? verified : codes} />
+      {verified.length > 0 && unverified.length > 0 && (
+        <details className="rounded-card-sm border-brut bg-surface-alt">
+          <summary className="cursor-pointer px-4 py-3 font-semibold marker:text-faint">
+            Show {unverified.length} unverified codes
+            <span className="ml-2 font-mono text-xs font-normal text-faint">
+              from the original 2020 list
+            </span>
+          </summary>
+          <div className="border-t-2 border-line p-4">
+            <p className="mt-0 mb-4 text-sm text-muted">
+              No current creator-code list confirms these, so they may well have
+              been retired. They are kept here in case they still work — but
+              start with the checked list above.
+            </p>
+            <CodeTable codes={unverified} />
+          </div>
+        </details>
+      )}
     </div>
   )
 }
