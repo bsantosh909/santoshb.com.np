@@ -73,7 +73,7 @@
     "playwright": "^1.61.1",
     "prettier": "^3.8.1",
     "satori": "^0.26.0",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.4",
     "simple-icons": "^16.24.1",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
