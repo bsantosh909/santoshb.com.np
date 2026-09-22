@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from '@tanstack/react-router'
 import { BrandMark } from '#/features/layout/components/BrandMark'
@@ -19,6 +19,14 @@ interface MobileNavDrawerProps {
  * Stays mounted so the slide/fade transitions run both ways.
  */
 export function MobileNavDrawer({ open, onClose }: MobileNavDrawerProps) {
+  // The drawer portals into <body>, which the server never renders at all.
+  // Gating on a post-mount flag keeps the *first* client render empty too, so
+  // the hydrated tree matches the server HTML. Branching on `typeof document`
+  // instead made the client render a <div> the server had not emitted, which
+  // is what threw React 19 hydration error #418 on every page.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   useEffect(() => {
     if (!open) return
     document.documentElement.style.overflow = 'hidden'
@@ -32,7 +40,9 @@ export function MobileNavDrawer({ open, onClose }: MobileNavDrawerProps) {
     }
   }, [open, onClose])
 
-  if (typeof document === 'undefined') return null
+  // Portaling in after hydration is invisible: a closed drawer is inert and
+  // translated fully off-screen, so there is nothing to see or tab into.
+  if (!mounted) return null
 
   return createPortal(
     <div
