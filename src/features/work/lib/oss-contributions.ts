@@ -101,11 +101,19 @@ export class OssContributions {
     const curatedRepos = new Set(
       OssContributions.#curated.map((entry) => entry.repo),
     )
+    // A manual entry can also surface in the PR stats once a PR of mine lands
+    // there (RoyaleAPI/cr-api-docs did). Dropping it here keeps one tile per
+    // repo — React was warning about the duplicated key — and lets the curated
+    // entry win, since it links to commits rather than the PR search.
+    const manualRepos = new Set(
+      OssContributions.#manualOthers.map((entry) => entry.repo),
+    )
     const counts = stats.prCounts as Record<string, number>
     return Object.entries(counts)
       .filter(
         ([repo]) =>
           !curatedRepos.has(repo) &&
+          !manualRepos.has(repo) &&
           !EXCLUDED_ORGS.has(repo.split('/')[0]) &&
           !EXCLUDED_PATTERNS.some((pattern) => pattern.test(repo)),
       )
