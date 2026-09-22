@@ -4,3 +4,10 @@ allowBuilds:
   lightningcss: true
   sharp: true
   unrs-resolver: true
+
+# remark-mdx-frontmatter still pins toml ^3.0.0, which carries a prototype-
+# pollution and an uncontrolled-recursion advisory. Nothing here parses TOML
+# (remark-frontmatter defaults to YAML only and every .mdx uses ---), but the
+# override clears the alerts. toml 4 keeps the same named `parse` export.
+overrides:
+  toml@<4.2.0: ^4.2.0
