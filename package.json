@@ -71,7 +71,7 @@
     "mdast-util-to-string": "^4.0.0",
     "playwright": "^1.63.0",
     "prettier": "^3.9.8",
-    "satori": "^0.26.0",
+    "satori": "^0.33.4",
     "sharp": "^0.35.4",
     "simple-icons": "^16.32.0",
     "typescript": "^6.0.3",
