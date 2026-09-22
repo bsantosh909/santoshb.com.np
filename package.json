@@ -37,7 +37,6 @@
     "@tanstack/router-plugin": "^1.168.40",
     "clsx": "^2.1.1",
     "estree-util-value-to-estree": "^3.5.0",
-    "lucide-react": "^1.47.0",
     "nitro": "^3.0.260610-beta",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
