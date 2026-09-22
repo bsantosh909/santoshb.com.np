@@ -1,5 +1,18 @@
 import { Link } from '@tanstack/react-router'
 
+/**
+ * Head for every not-found render. Lives on the `/$` catch-all, which serves
+ * both the prerendered 404.html and any unmatched path at runtime. Before that
+ * route existed, real 404s resolved through the root route instead and so
+ * silently lost their `noindex` and showed the site-wide title.
+ */
+export const notFoundHead = () => ({
+  meta: [
+    { title: 'Not found - Santosh Bhandari' },
+    { name: 'robots', content: 'noindex' },
+  ],
+})
+
 export function NotFoundPage() {
   return (
     <main className="mx-auto flex max-w-shell flex-col items-start gap-6 px-5 md:px-7 py-24">
