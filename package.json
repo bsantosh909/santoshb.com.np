@@ -67,7 +67,7 @@
     "eslint": "^10.11.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
-    "jsdom": "^28.1.0",
+    "jsdom": "^30.1.1",
     "mdast-util-to-string": "^4.0.0",
     "playwright": "^1.63.0",
     "prettier": "^3.9.8",
